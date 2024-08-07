@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/common :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/common :: nav}"></header>
+<main class="main-content">
+    <div class="addition">
+        <h1 class="mb-4">Add RAM</h1>
+        <form>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="size" class="form-label">Size:</label>
+                <select id="size" name="size" class="form-select" required>
+                    <option value="" disabled selected>Select Size</option>
+                    <option th:each="size : ${ramSizes}" th:value="${size}" th:text="${size}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Type:</label>
+                <select id="type" name="type" class="form-select" required>
+                    <option value="" disabled selected>Select Type</option>
+                    <option th:each="type : ${ramTypes}" th:value="${type}" th:text="${type}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add RAM</button>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/common :: footer}"></footer>
+</body>
+
+</html>

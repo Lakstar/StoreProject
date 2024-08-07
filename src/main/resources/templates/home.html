@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/common :: head}"></head>
+
+    <body>
+        <header th:replace="~{fragments/common :: nav}"></header>
+
+        <main class="main-content">
+            <div class="text-container">
+                <h1>
+                    <a th:href="@{/cart}">Everything can be found here! Enjoy your shopping!</a>
+                </h1>
+            </div>
+        </main>
+
+        <footer th:replace="~{fragments/common :: footer}"></footer>
+    </body>
+
+</html>

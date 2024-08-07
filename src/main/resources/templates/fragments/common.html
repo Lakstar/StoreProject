@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tech Shop</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="/css/reset-css.css"/>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="links">
+                <ul>
+                    <li>
+                        <a th:href="@{/}">Home</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/info}">Info</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/shop}">Shop</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/cart}">Cart</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/add}">Add Products</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/login}">Login</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/register}">Register</a>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+</header>
+<footer class="footer bg-transparent py-2">
+    <div class="container-fluid text-center">
+        <div class="footer-background footer-text fixed-bottom">
+            Bottom Stuff
+        </div>
+    </div>
+</footer>
+</body>
+</html>

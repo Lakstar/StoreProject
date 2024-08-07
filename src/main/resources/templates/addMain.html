@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/common :: head}"></head>
+
+<body>
+    <header th:replace="~{fragments/common :: nav}"></header>
+
+    <main class="main-add">
+        <div class="add-box">
+            <h2>Add a product to the shop:</h2>
+            <div class="button-container">
+                <a th:href="@{/add/add-gpu}"
+                   class="add-button">Add GPU</a>
+                <a th:href="@{/add/add-cpu}"
+                   class="add-button">Add CPU</a>
+                <a th:href="@{/add/add-pc}"
+                   class="add-button">Add PC</a>
+                <a th:href="@{/add/add-ram}"
+                   class="add-button">Add RAM</a>
+                <a th:href="@{/add/add-memory}"
+                   class="add-button">Add Memory</a>
+            </div>
+        </div>
+    </main>
+
+<footer th:replace="~{fragments/common :: footer}"></footer>
+</body>
+
+</html>
