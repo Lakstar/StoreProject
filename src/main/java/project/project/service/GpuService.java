@@ -1,7 +1,8 @@
 package project.project.service;
 
 import org.springframework.stereotype.Service;
-import project.project.model.dto.entity.GPU;
+import project.project.model.dto.GpuDTO;
+import project.project.model.entity.GPU;
 import project.project.repository.GPURepository;
 
 import java.util.List;
@@ -14,12 +15,8 @@ public class GpuService {
         this.gpuRepository = gpuRepository;
     }
 
-    public void saveGPU(GPU gpu) {
+    public void addGPU(GPU gpu) {
         gpuRepository.save(gpu);
-    }
-
-    public List<GPU> findAllGPUs() {
-        return gpuRepository.findAll();
     }
 
     public GPU getGPUById(long id) {

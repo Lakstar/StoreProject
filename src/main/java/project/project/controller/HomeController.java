@@ -32,10 +32,6 @@ public class HomeController {
         return "info";
     }
 
-    @GetMapping("/add/add-gpu")
-    public String addGPU(Model model) {
-        return "addGpu";
-    }
     @GetMapping("/add/add-ram")
     public String addRAM(Model model) {
         return "addRAM";

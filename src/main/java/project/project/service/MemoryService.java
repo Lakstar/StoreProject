@@ -1,7 +1,7 @@
 package project.project.service;
 
 import org.springframework.stereotype.Service;
-import project.project.model.dto.entity.Memory;
+import project.project.model.entity.Memory;
 import project.project.repository.MemoryRepository;
 
 import java.util.List;

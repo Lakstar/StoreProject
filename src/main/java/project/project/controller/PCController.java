@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import project.project.model.dto.PcDTO;
-import project.project.model.dto.entity.PC;
+import project.project.model.entity.PC;
 import project.project.repository.CPURepository;
 import project.project.repository.GPURepository;
 import project.project.repository.MemoryRepository;
@@ -49,6 +49,6 @@ public class PCController {
         pc.setPcType(pcDTO.getPcType());
         pc.setPrice(pcDTO.getPrice());
         pcService.savePC(pc);
-        return "redirect:/add"; // Redirect to the list of PCs after successful submission
+        return "redirect:/add";
     }
 }

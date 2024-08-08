@@ -4,17 +4,17 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 public class RegisterDTO {
-    @NotEmpty(message = "Username is required")
+    @NotEmpty
     private String username;
 
-    @NotEmpty(message = "Email is required")
-    @Email(message = "Invalid email format")
+    @NotEmpty
+    @Email
     private String email;
 
-    @NotEmpty(message = "Password is required")
+    @NotEmpty
     private String password;
 
-    @NotEmpty(message = "Please confirm your password")
+    @NotEmpty
     private String confirmPassword;
 
     public String getUsername() {

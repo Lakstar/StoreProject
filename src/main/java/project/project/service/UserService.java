@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import project.project.config.UserSession;
 import project.project.model.dto.LoginDTO;
 import project.project.model.dto.RegisterDTO;
-import project.project.model.dto.entity.User;
+import project.project.model.entity.User;
 import project.project.repository.UserRepository;
 
 import java.util.Optional;

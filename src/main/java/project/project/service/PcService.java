@@ -2,8 +2,8 @@ package project.project.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import project.project.model.dto.entity.PC;
-import project.project.model.dto.entity.PCType;
+import project.project.model.entity.PC;
+import project.project.model.entity.PCType;
 import project.project.repository.*;
 
 import java.util.List;
