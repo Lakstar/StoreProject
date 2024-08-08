@@ -4,7 +4,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import project.project.model.dto.entity.*;
-import project.project.model.entity.*;
 import project.project.repository.*;
 
 import java.util.Map;
