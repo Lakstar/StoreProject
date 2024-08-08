@@ -22,16 +22,6 @@ public class HomeController {
         return "cart";
     }
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        return "login";
-    }
-
-    @GetMapping("/register")
-    public String register(Model model) {
-        return "register";
-    }
-
     @GetMapping("/shop")
     public String shop(Model model) {
         return "shop";
