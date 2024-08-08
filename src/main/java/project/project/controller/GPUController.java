@@ -38,11 +38,15 @@ public class GPUController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("gpuData", gpuDTO);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.gpuData", bindingResult);
-            return "redirect:/add/addGPU";
+            return "redirect:/add/add-gpu";
         }
 
-        GPU gpu = modelMapper.map(gpuDTO, GPU.class);
-        gpuService.addGPU(gpu);
+
+        boolean success = gpuService.save(gpuDTO);
+        if (!success) {
+            redirectAttributes.addFlashAttribute("gpuData", gpuDTO);
+            return "redirect:/add/add-gpu";
+        }
         return "redirect:/add";
     }
 }

@@ -8,14 +8,18 @@
 <main class="main-content">
     <div class="addition">
         <h1 class="mb-4">Add CPU</h1>
-        <form th:action="@{/add/add-cpu}" method="post">
+        <form th:action="@{/add/add-cpu}" th:object="${cpuData}" th:method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <input type="text" id="name" name="name" class="form-control"
+                       th:field="*{name}" required
+                       th:classappend="${#fields.hasErrors('name')}? 'is-invalid'">
+                <small class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                       th:errors="*{name}">Name not within range</small>
             </div>
             <div class="mb-3">
                 <label for="cpuType" class="form-label">CPU Type:</label>
-                <select id="cpuType" name="cpuType" class="form-select" required>
+                <select id="cpuType" name="cpuType" class="form-select" th:field="*{cpuType}" required>
                     <option value="" disabled selected>Select CPU Type</option>
                     <option th:each="type : ${cpuTypes}" th:value="${type}" th:text="${type}"></option>
                 </select>
