@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head>
     <title>Tech Shop</title>
     <meta charset="UTF-8"/>
@@ -21,19 +22,24 @@
                         <a th:href="@{/info}">Info</a>
                     </li>
                     <li>
-                        <a th:href="@{/shop}">Shop</a>
+                        <a th:href="@{/shop}"
+                           sec:authorize="isAuthenticated()">Shop</a>
                     </li>
                     <li>
-                        <a th:href="@{/cart}">Cart</a>
+                        <a th:href="@{/cart}"
+                           sec:authorize="isAuthenticated()">Cart</a>
                     </li>
                     <li>
-                        <a th:href="@{/add}">Add Products</a>
+                        <a th:href="@{/add}"
+                         sec:authorize="isAuthenticated()">Add Products</a>
                     </li>
                     <li>
-                        <a th:href="@{/login}">Login</a>
+                        <a th:href="@{/login}"
+                           sec:authorize="!isAuthenticated()">Login</a>
                     </li>
                     <li>
-                        <a th:href="@{/register}">Register</a>
+                        <a th:href="@{/register}"
+                           sec:authorize="!isAuthenticated()">Register</a>
                     </li>
                 </ul>
         </div>

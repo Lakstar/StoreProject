@@ -3,6 +3,10 @@ package project.project.init;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import project.project.model.enums.CPUType;
+import project.project.model.enums.MemoryType;
+import project.project.model.enums.RamSizes;
+import project.project.model.enums.RamType;
 import project.project.repository.*;
 import project.project.model.entity.*;
 import java.util.Map;
@@ -56,7 +60,6 @@ public class Init implements CommandLineRunner {
         this.passwordEncoder = passwordEncoder;
     }
 
-    private final User defaultAdminUser = new User();
 
     @Override
     public void run(String... args) throws Exception {
@@ -97,14 +100,6 @@ public class Init implements CommandLineRunner {
                 ram.setType(ramTypes.get(name));
                 ramRepository.save(ram);
             }
-        }
-
-        if (userRepository.count() == 0) {
-            defaultAdminUser.setUsername("admin");
-            defaultAdminUser.setEmail("adsa@adsa.com");
-            defaultAdminUser.setAdmin(true);
-            defaultAdminUser.setPassword(passwordEncoder.encode("1q2w3e4r")); // Encode the password
-            userRepository.save(defaultAdminUser);
         }
 
     }

@@ -3,7 +3,7 @@ package project.project.service.impl;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import project.project.model.entity.PC;
-import project.project.model.entity.PCType;
+import project.project.model.enums.PCType;
 import project.project.repository.*;
 
 import java.util.List;

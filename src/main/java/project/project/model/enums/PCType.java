@@ -1,4 +1,4 @@
-package project.project.model.entity;
+package project.project.model.enums;
 
 public enum PCType {
     laptop, PC

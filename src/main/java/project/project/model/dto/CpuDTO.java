@@ -3,7 +3,7 @@ package project.project.model.dto;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import project.project.model.entity.CPUType;
+import project.project.model.enums.CPUType;
 
 public class CpuDTO {
 

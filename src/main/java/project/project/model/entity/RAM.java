@@ -1,6 +1,8 @@
 package project.project.model.entity;
 
 import jakarta.persistence.*;
+import project.project.model.enums.RamSizes;
+import project.project.model.enums.RamType;
 
 @Entity
 @Table(name="ram")

@@ -1,6 +1,7 @@
 package project.project.model.entity;
 
 import jakarta.persistence.*;
+import project.project.model.enums.PCType;
 
 @Entity
 @Table(name="pcs")

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.project.model.dto.CpuDTO;
-import project.project.model.entity.CPUType;
+import project.project.model.enums.CPUType;
 import project.project.service.impl.CpuService;
 
 @Controller

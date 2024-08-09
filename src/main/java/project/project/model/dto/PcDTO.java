@@ -3,7 +3,7 @@ package project.project.model.dto;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import project.project.model.entity.PCType;
+import project.project.model.enums.PCType;
 
 public class PcDTO {
     @NotEmpty

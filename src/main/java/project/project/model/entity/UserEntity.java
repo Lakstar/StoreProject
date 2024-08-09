@@ -2,6 +2,9 @@ package project.project.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="users")
 public class UserEntity {
@@ -18,11 +21,23 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
-    private boolean isAdmin;
+    @ManyToMany(
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name="users_roles",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="role_id")
+    )
+    private List<UserRoleEntity> role= new ArrayList<>();
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+
+    public List<UserRoleEntity> getRole() {
+        return role;
+    }
+
+    public void setRole(List<UserRoleEntity> role) {
+        this.role = role;
     }
 
     public long getId() {
@@ -57,7 +72,4 @@ public class UserEntity {
         this.email = email;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
 }
