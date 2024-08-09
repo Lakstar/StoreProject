@@ -11,7 +11,7 @@ import project.project.repository.CPURepository;
 import project.project.repository.GPURepository;
 import project.project.repository.MemoryRepository;
 import project.project.repository.RAMRepository;
-import project.project.service.*;
+import project.project.service.impl.*;
 
 @Controller
 public class PCController {

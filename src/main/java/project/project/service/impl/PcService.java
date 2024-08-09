@@ -1,4 +1,4 @@
-package project.project.service;
+package project.project.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

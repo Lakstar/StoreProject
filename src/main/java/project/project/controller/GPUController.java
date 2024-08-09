@@ -10,17 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.project.model.dto.GpuDTO;
-import project.project.model.entity.GPU;
-import project.project.service.GpuService;
+import project.project.service.impl.GpuService;
 
 @Controller
 public class GPUController {
     private final GpuService gpuService;
-    private final ModelMapper modelMapper;
 
     public GPUController(GpuService gpuService, ModelMapper modelMapper) {
         this.gpuService = gpuService;
-        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/add/add-gpu")
