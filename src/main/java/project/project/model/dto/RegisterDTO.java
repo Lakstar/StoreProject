@@ -1,20 +1,25 @@
 package project.project.model.dto;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class RegisterDTO {
-    @NotEmpty
+    @NotBlank
+    @Size(min = 3, max = 20)
     private String username;
 
-    @NotEmpty
+    @NotBlank
     @Email
     private String email;
 
-    @NotEmpty
+    @NotBlank
+    @Size(min = 6, max = 30)
     private String password;
 
-    @NotEmpty
+    @NotBlank
+    @Size(min = 6, max = 30)
     private String confirmPassword;
 
     public String getUsername() {

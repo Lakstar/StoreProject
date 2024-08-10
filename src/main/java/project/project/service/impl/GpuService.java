@@ -18,7 +18,7 @@ public class GpuService {
         this.modelMapper = modelMapper;
     }
 
-    public boolean save(GpuDTO gpuDTO) {
+    public boolean saveGPU(GpuDTO gpuDTO) {
         try {
             GPU gpu = modelMapper.map(gpuDTO, GPU.class);
             gpuRepository.save(gpu);

@@ -1,5 +1,5 @@
 body, html {
-    background-image: url(/static/images/background.jpg);
+    background-image: url('/images/background.jpg');
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -26,10 +26,10 @@ nav .links ul li {
 
 nav .links ul li a {
     display: block;
-    padding: 10px 0; /* Adjust padding for button size */
+    padding: 10px 0;
     text-decoration: none;
     color: #fff;
-    background-color: #007bff; /* Blue background */
+    background-color: #007bff;
     border-radius: 5px;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
@@ -37,45 +37,45 @@ nav .links ul li a {
 
 nav .links ul li a:hover,
 nav .links ul li a.active {
-    background-color: #0056b3; /* Darker blue for hover and active */
+    background-color: #0056b3;
 }
 
 .main-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px); /* Adjust based on header and footer height */
+    height: calc(100vh - 80px);
     text-align: center;
 }
 
 .text-container {
-    background-color: rgba(0, 0, 0, 0.6); /* Darker blur background */
+    background-color: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
 }
 
 .text-container h1 {
-    font-size: 4em; /* Larger font size */
-    color: #fff; /* White text */
+    font-size: 4em;
+    color: #fff;
 }
 
 .text-container h1 a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit color from h1 */
+    text-decoration: none;
+    color: inherit;
 }
 
 .main-add {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust as needed for vertical centering */
+    height: 100vh;
 }
 
 .main-add {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Adjust as needed for vertical centering */
+    height: 100vh;
 }
 
 .add-box {

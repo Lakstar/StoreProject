@@ -14,34 +14,35 @@
 <header>
     <nav>
         <div class="links">
-                <ul>
-                    <li>
-                        <a th:href="@{/}">Home</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/info}">Info</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/shop}"
-                           sec:authorize="isAuthenticated()">Shop</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/cart}"
-                           sec:authorize="isAuthenticated()">Cart</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/add}"
-                         sec:authorize="isAuthenticated()">Add Products</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/login}"
-                           sec:authorize="!isAuthenticated()">Login</a>
-                    </li>
-                    <li>
-                        <a th:href="@{/register}"
-                           sec:authorize="!isAuthenticated()">Register</a>
-                    </li>
-                </ul>
+            <ul>
+                <li>
+                    <a th:href="@{/}">Home</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/user}">User</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/shop}">Shop</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/cart}">Cart</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/add}">Add Products</a>
+                </li>
+
+                <li sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/login}">Login</a>
+                </li>
+
+                <li sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/register}">Register</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>

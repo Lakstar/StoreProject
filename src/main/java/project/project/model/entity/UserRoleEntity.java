@@ -16,6 +16,11 @@ public class UserRoleEntity {
     @NotNull
     private UserRoles userRole;
 
+    public UserRoleEntity(UserRoles userRoles) {
+        this.userRole=userRoles;
+    }
+
+
     public void setId(Long id) {
         this.id = id;
     }

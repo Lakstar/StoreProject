@@ -17,8 +17,6 @@ public class Init implements CommandLineRunner {
     private final GPURepository gpuRepository;
     private final MemoryRepository memoryRepository;
     private final RAMRepository ramRepository;
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     private final Map<String, CPUType> defaultCPUs = Map.of(
             "Intel Core i3 13330H", CPUType.I3,
@@ -56,8 +54,6 @@ public class Init implements CommandLineRunner {
         this.gpuRepository = gpuRepository;
         this.memoryRepository = memoryRepository;
         this.ramRepository = ramRepository;
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
 

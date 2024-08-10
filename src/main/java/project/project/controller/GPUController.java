@@ -38,8 +38,7 @@ public class GPUController {
             return "redirect:/add/add-gpu";
         }
 
-
-        boolean success = gpuService.save(gpuDTO);
+        boolean success = gpuService.saveGPU(gpuDTO);
         if (!success) {
             redirectAttributes.addFlashAttribute("gpuData", gpuDTO);
             return "redirect:/add/add-gpu";
