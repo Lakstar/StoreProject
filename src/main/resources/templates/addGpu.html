@@ -5,24 +5,24 @@
 <body>
 <header th:replace="~{fragments/common :: nav}"></header>
 
-<main class="main-content">
-    <div class="addition">
-        <h1 class="mb-4">Add GPU</h1>
-        <form th:action="@{/add/add-gpu}" th:object="${gpuData}" th:method="POST">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" th:field="*{name}" required
-                       th:errorclass="'is-invalid text-danger'">
-                <small class="invalid-feedback danger">Name error message</small>
-            </div>
-            <div class="mb-3">
-                <label for="ram" class="form-label">RAM (in GB):</label>
-                <input type="number" id="ram" name="ram" class="form-control" th:field="*{gpuRam}" min="1" required
-                       th:errorclass="'is-invalid text-danger'">
-                <small class="invalid-feedback danger">Size error message</small>
-            </div>
-            <button type="submit" class="btn btn-primary">Add GPU</button>
-        </form>
+<main class="main-add">
+    <div class="add-box">
+        <h2>Add a GPU to the shop:</h2>
+        <div class="form-container">
+            <form th:action="@{/add/add-gpu}" method="post" th:object="${gpuData}">
+                <div class="form-group">
+                    <label for="name" class="h3 mb-2">GPU Name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
+                </div>
+                <div class="form-group">
+                    <label for="gpuRam" class="h3 mb-2">GPU RAM (GB)</label>
+                    <input type="number" class="form-control" id="gpuRam" name="gpuRam" th:field="*{gpuRam}" min="1" required/>
+                </div>
+                <div class="button-holder d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Add GPU</button>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
 <footer th:replace="~{fragments/common :: footer}"></footer>

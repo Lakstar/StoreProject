@@ -31,9 +31,24 @@ public class UserEntity {
     )
     private List<UserRoleEntity> role = new ArrayList<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "orders",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "pc_id")
+    )
+    private List<PC> orders = new ArrayList<>();
 
     public List<UserRoleEntity> getRole() {
         return role;
+    }
+
+    public List<PC> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<PC> orders) {
+        this.orders = orders;
     }
 
     public void setRole(List<UserRoleEntity> role) {

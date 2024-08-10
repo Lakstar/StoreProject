@@ -5,27 +5,29 @@
 <body>
 <header th:replace="~{fragments/common :: nav}"></header>
 
-<main class="main-content">
-    <div class="addition">
-        <h1 class="mb-4">Add CPU</h1>
-        <form th:action="@{/add/add-cpu}" th:object="${cpuData}" th:method="POST">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-control"
-                       th:field="*{name}" required
-                       th:classappend="${#fields.hasErrors('name')}? 'is-invalid'">
-                <small class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
-                       th:errors="*{name}">Name not within range</small>
-            </div>
-            <div class="mb-3">
-                <label for="cpuType" class="form-label">CPU Type:</label>
-                <select id="cpuType" name="cpuType" class="form-select" th:field="*{cpuType}" required>
-                    <option value="" disabled selected>Select CPU Type</option>
-                    <option th:each="type : ${cpuTypes}" th:value="${type}" th:text="${type}"></option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Add CPU</button>
-        </form>
+<main class="main-add">
+    <div class="add-box">
+        <h2>Add a CPU to the shop:</h2>
+        <div class="form-container">
+            <form th:action="@{/add/add-cpu}" method="post" th:object="${cpuData}">
+                <div class="form-group">
+                    <label for="name" class="h3 mb-2">CPU Name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
+                </div>
+                <div class="form-group">
+                    <label for="cpuType" class="h3 mb-2">CPU Type</label>
+                    <select class="form-control" id="cpuType" name="cpuType" th:field="*{cpuType}" required>
+                        <option value="" disabled>Select CPU Type</option>
+                        <option th:each="type : ${cpuTypes}"
+                                th:value="${type}"
+                                th:text="${type.toString()}"></option>
+                    </select>
+                </div>
+                <div class="button-holder d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Add CPU</button>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
 <footer th:replace="~{fragments/common :: footer}"></footer>

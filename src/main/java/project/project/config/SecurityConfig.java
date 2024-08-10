@@ -20,6 +20,8 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                                 .requestMatchers("/", "/login", "/register").permitAll()
+                                .requestMatchers("/add/**").hasRole("ADMIN")
+                                .requestMatchers("/view/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->

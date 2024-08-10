@@ -24,27 +24,4 @@ public class HomeController {
         return "addMain";
     }
 
-    @GetMapping("/cart")
-    public String cart(Model model) {
-        return "cart";
-    }
-
-    @GetMapping("/shop")
-    public String shop(Model model) {
-        return "shop";
-    }
-
-    @GetMapping("/info")
-    public String info(Model model) {
-        return "info";
-    }
-
-    @GetMapping("/add/add-ram")
-    public String addRAM(Model model) {
-        return "addRAM";
-    }
-    @GetMapping("/add/add-memory")
-    public String addMemory(Model model) {
-        return "addMemory";
-    }
 }

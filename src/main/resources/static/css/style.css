@@ -1,10 +1,12 @@
 body, html {
-    background-image: url('/images/background.jpg');
+    background-image: url("/images/background.jpg");
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: 5rem;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 header {
@@ -68,14 +70,7 @@ nav .links ul li a.active {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-.main-add {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    height: 120vh;
 }
 
 .add-box {
@@ -224,4 +219,76 @@ nav .links ul li a.active {
 
 .dropdown-menu .dropdown-item:last-child {
     border-bottom: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.pc-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.pc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.pc-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.pc-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pc-section {
+    flex: 1 1 45%;
+    min-width: 250px;
+    background-color: rgba(240, 240, 240, 0.9);
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pc-section p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.pc-section strong {
+    color: #333;
+}
+
+.buy-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #218838;
 }

@@ -1,26 +1,25 @@
 package project.project.model.dto;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import project.project.model.enums.PCType;
 
 public class PcDTO {
     @NotEmpty
     @Size(min = 3, max = 30)
     private String name;
-    @NotEmpty
+    @NotNull
     private Long cpuId;
-    @NotEmpty
+    @NotNull
     private Long gpuId;
-    @NotEmpty
+    @NotNull
     private Long memoryId;
-    @NotEmpty
+    @NotNull
     private Long ramId;
-    @NotEmpty
+    @NotNull
     private PCType pcType;
-    @NotEmpty
+    @NotNull
     @Min(value = 1)
+    @Max(value = 10000)
     private double price;
 
     public String getName() {

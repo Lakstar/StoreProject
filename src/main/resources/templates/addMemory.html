@@ -5,32 +5,31 @@
 <body>
 <header th:replace="~{fragments/common :: nav}"></header>
 
-<main class="main-content">
-    <div class="addition">
-        <h1 class="mb-4">Add Memory</h1>
-        <form>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+<main class="main-add">
+    <div class="add-box">
+        <h2>Add Memory to the Shop:</h2>
+        <form th:action="@{/add/add-memory}" th:object="${memoryData}" method="post">
+            <div class="form-group">
+                <label for="name" class="h3 mb-2">Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}" required/>
             </div>
-            <div class="mb-3">
-                <label for="memoryType" class="form-label">Memory Type:</label>
-                <select id="memoryType" name="memoryType" class="form-select" required>
-                    <option value="" disabled selected>Select Memory Type</option>
+            <div class="form-group">
+                <label for="type" class="h3 mb-2">Type</label>
+                <select class="form-control" id="type" th:field="*{type}" required>
                     <option th:each="type : ${memoryTypes}" th:value="${type}" th:text="${type}"></option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="size" class="form-label">Size (in GB):</label>
-                <input type="number" id="size" name="size" class="form-control" min="1" required>
+            <div class="form-group">
+                <label for="size" class="h3 mb-2">Size (GB)</label>
+                <input type="number" class="form-control" id="size" th:field="*{size}" required/>
             </div>
-            <button type="submit" class="btn btn-primary">Add Memory</button>
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Add Memory</button>
+            </div>
         </form>
     </div>
-
 </main>
 
 <footer th:replace="~{fragments/common :: footer}"></footer>
 </body>
-
 </html>

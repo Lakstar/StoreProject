@@ -5,19 +5,19 @@ import org.springframework.stereotype.Service;
 import project.project.model.dto.CpuDTO;
 import project.project.model.entity.CPU;
 import project.project.repository.CPURepository;
-
-import java.util.List;
+import project.project.service.CpuService;
 
 @Service
-public class CpuService {
+public class CpuServiceImpl implements CpuService {
     private final CPURepository cpuRepository;
     private final ModelMapper modelMapper;
 
-    public CpuService(CPURepository cpuRepository, ModelMapper modelMapper) {
+    public CpuServiceImpl(CPURepository cpuRepository, ModelMapper modelMapper) {
         this.cpuRepository = cpuRepository;
         this.modelMapper = modelMapper;
     }
 
+    @Override
     public boolean save(CpuDTO cpuDTO) {
         try {
             CPU cpu = modelMapper.map(cpuDTO, CPU.class);
@@ -29,8 +29,9 @@ public class CpuService {
         }
     }
 
-    public CPU getCPUById(long id) {
-        return cpuRepository.findById(id).orElseThrow(() -> new RuntimeException("CPU not found"));
+    @Override
+    public CPU getPartById(long id) {
+        return cpuRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("CPU not found with id: " + id));
     }
-
 }

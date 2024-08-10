@@ -21,34 +21,51 @@ public class Init implements CommandLineRunner {
     private final UserRoleRepository userRoleRepository;
 
     private final Map<String, CPUType> defaultCPUs = Map.of(
-            "Intel Core i3 13330H", CPUType.I3,
-            "Intel Core i5 13455K", CPUType.I5,
-            "Intel Core i7 13890H", CPUType.I7
+            "Intel Core i3 12100", CPUType.I3,
+            "Intel Core i5 12600K", CPUType.I5,
+            "Intel Core i7 13700H", CPUType.I7,
+            "Intel Core i5 11320K", CPUType.I5,
+            "Intel Core i7 13300", CPUType.I7
     );
 
     private final Map<String, Integer> defaultGPUs = Map.of(
-            "NVIDIA GeForce GTX 1080", 8, // Example GPU with 8 GB RAM
-            "AMD Radeon RX 580", 8 // Example GPU with 8 GB RAM
+            "NVIDIA GeForce GTX 1650", 4,
+            "NVIDIA GeForce GTX 1660", 6,
+            "NVIDIA GeForce RTX 2060", 6,
+            "AMD Radeon RX 570", 4,
+            "AMD Radeon RX 580", 8
     );
 
     private final Map<String, MemoryType> defaultMemories = Map.of(
-            "Samsung 860 EVO", MemoryType.SSD,
-            "Seagate Barracuda", MemoryType.HDD
+            "Samsung 970 EVO Plus", MemoryType.SSD,
+            "WD Black SN850", MemoryType.SSD,
+            "Seagate FireCuda", MemoryType.SSD,
+            "Western Digital Blue", MemoryType.HDD,
+            "Toshiba P300", MemoryType.HDD
     );
 
     private final Map<String, Integer> memorySizes = Map.of(
-            "Samsung 860 EVO", 500, // 500 GB
-            "Seagate Barracuda", 2000 // 2 TB
+            "Samsung 970 EVO Plus", 1000,
+            "WD Black SN850", 1000,
+            "Seagate FireCuda", 2000,
+            "Western Digital Blue", 1000,
+            "Toshiba P300", 2000
     );
 
     private final Map<String, RamSizes> defaultRAMs = Map.of(
             "Corsair Vengeance LPX 16GB", RamSizes.SIXTEEN_GB,
-            "G.Skill Ripjaws V 8GB", RamSizes.EIGHT_GB
+            "G.Skill Ripjaws V 16GB", RamSizes.SIXTEEN_GB,
+            "Crucial Ballistix 16GB", RamSizes.SIXTEEN_GB,
+            "G.Skill Ripjaws V 8GB", RamSizes.EIGHT_GB,
+            "Corsair Vengeance LPX 8GB", RamSizes.EIGHT_GB
     );
 
     private final Map<String, RamType> ramTypes = Map.of(
             "Corsair Vengeance LPX 16GB", RamType.DDR4,
-            "G.Skill Ripjaws V 8GB", RamType.DDR4
+            "G.Skill Ripjaws V 16GB", RamType.DDR4,
+            "Crucial Ballistix 16GB", RamType.DDR4,
+            "G.Skill Ripjaws V 8GB", RamType.DDR4,
+            "Corsair Vengeance LPX 8GB", RamType.DDR4
     );
 
     public Init(CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, PasswordEncoder passwordEncoder1, UserRepository userRepository1, UserRoleRepository userRoleRepository) {
@@ -119,8 +136,6 @@ public class Init implements CommandLineRunner {
             adminUser.getRole().add(adminRole);
 
             userRepository.save(adminUser);
-
-            System.out.println("Admin user created successfully.");
         }
 
     }

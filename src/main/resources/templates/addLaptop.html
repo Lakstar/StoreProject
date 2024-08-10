@@ -5,52 +5,83 @@
 <body>
 <header th:replace="~{fragments/common :: nav}"></header>
 
-<main class="main-content">
-    <div class="addition">
-        <h1 class="mb-4">Add PC</h1>
-        <form th:action="@{/add/add-pc}" th:method="POST" th:object="${pc}">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" th:field="*{name}" required
-                       th:errorclass="'is-invalid text-danger'">
-                <small></small>
+<main class="main-add">
+    <div class="add-box">
+        <h2>Add a PC to the shop:</h2>
+        <div class="form-container">
+            <!-- Display validation errors if any -->
+            <div th:if="${errors != null}">
+                <div th:each="error : ${errors}" class="alert alert-danger">
+                    <span th:text="${error.defaultMessage}"></span>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="cpu" class="form-label">CPU:</label>
-                <select id="cpu" name="cpuId" class="form-select" th:field="*{cpuId}" required>
-                    <option th:each="cpu : ${cpus}" th:value="${cpu.id}" th:text="${cpu.name}"></option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="gpu" class="form-label">GPU:</label>
-                <select id="gpu" name="gpuId" class="form-select" th:field="*{gpuId}" required>
-                    <option th:each="gpu : ${gpus}" th:value="${gpu.id}" th:text="${gpu.name}"></option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="memory" class="form-label">Memory:</label>
-                <select id="memory" name="memoryId" class="form-select" th:field="*{memoryId}" required>
-                    <option th:each="memory : ${memories}" th:value="${memory.id}" th:text="${memory.name}"></option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="ram" class="form-label">RAM:</label>
-                <select id="ram" name="ramId" class="form-select" th:field="*{ramId}" required>
-                    <option th:each="ram : ${rams}" th:value="${ram.id}" th:text="${ram.name}"></option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="pcType" class="form-label">PC Type:</label>
-                <select id="pcType" name="pcType" class="form-select" th:field="*{pcType}" required>
-                    <option th:each="type : ${pcTypes}" th:value="${type}" th:text="${type}"></option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price:</label>
-                <input type="number" id="price" name="price" class="form-control" th:field="*{price}" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Add PC</button>
-        </form>
+
+            <form th:action="@{/add/add-pc}" method="post" th:object="${pc}">
+                <div class="form-group">
+                    <label for="name" class="h3 mb-2">PC Name</label>
+                    <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="cpu" class="h3 mb-2">CPU</label>
+                    <select class="form-control" id="cpu" name="cpuId" th:field="*{cpuId}" required>
+                        <option value="" disabled>Select CPU</option>
+                        <option th:each="cpu : ${cpus}"
+                                th:value="${cpu.id}"
+                                th:text="${cpu.name}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="gpu" class="h3 mb-2">GPU</label>
+                    <select class="form-control" id="gpu" name="gpuId" th:field="*{gpuId}" required>
+                        <option value="" disabled>Select GPU</option>
+                        <option th:each="gpu : ${gpus}"
+                                th:value="${gpu.id}"
+                                th:text="${gpu.name}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="memory" class="h3 mb-2">Memory</label>
+                    <select class="form-control" id="memory" name="memoryId" th:field="*{memoryId}" required>
+                        <option value="" disabled>Select Memory</option>
+                        <option th:each="memory : ${memories}"
+                                th:value="${memory.id}"
+                                th:text="${memory.name}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ram" class="h3 mb-2">RAM</label>
+                    <select class="form-control" id="ram" name="ramId" th:field="*{ramId}" required>
+                        <option value="" disabled>Select RAM</option>
+                        <option th:each="ram : ${rams}"
+                                th:value="${ram.id}"
+                                th:text="${ram.name}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pcType" class="h3 mb-2">PC Type</label>
+                    <select class="form-control" id="pcType" name="pcType" th:field="*{pcType}" required>
+                        <option value="" disabled>Select PC Type</option>
+                        <option th:each="type : ${pcTypes}"
+                                th:value="${type.name()}"
+                                th:text="${type.name()}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price" class="h3 mb-2">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" th:field="*{price}" step="0.01" required/>
+                </div>
+
+                <div class="button-holder">
+                    <button type="submit" class="btn btn-primary">Add PC</button>
+                </div>
+            </form>
+        </div>
     </div>
 </main>
 <footer th:replace="~{fragments/common :: footer}"></footer>

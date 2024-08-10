@@ -5,18 +5,19 @@ import org.springframework.ui.Model;
 import project.project.model.entity.PC;
 import project.project.model.enums.PCType;
 import project.project.repository.*;
+import project.project.service.PcService;
 
 import java.util.List;
 
 @Service
-public class PcService {
+public class PcServiceImpl implements PcService {
     private final PCRepository pcRepository;
     private final CPURepository cpuRepository;
     private final GPURepository gpuRepository;
     private final MemoryRepository memoryRepository;
     private final RAMRepository ramRepository;
 
-    public PcService(PCRepository pcRepository, CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository) {
+    public PcServiceImpl(PCRepository pcRepository, CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository) {
         this.pcRepository = pcRepository;
         this.cpuRepository = cpuRepository;
         this.gpuRepository = gpuRepository;
@@ -24,10 +25,12 @@ public class PcService {
         this.ramRepository = ramRepository;
     }
 
+    @Override
     public void savePC(PC pc) {
         pcRepository.save(pc);
     }
 
+    @Override
     public List<PC> getAllPCs() {
         return pcRepository.findAll();
     }
@@ -40,4 +43,5 @@ public class PcService {
         model.addAttribute("pcTypes", PCType.values());
         return model;
     }
+
 }

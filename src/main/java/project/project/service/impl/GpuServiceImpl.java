@@ -5,19 +5,19 @@ import org.springframework.stereotype.Service;
 import project.project.model.dto.GpuDTO;
 import project.project.model.entity.GPU;
 import project.project.repository.GPURepository;
-
-import java.util.List;
+import project.project.service.GpuService;
 
 @Service
-public class GpuService {
+public class GpuServiceImpl implements GpuService {
     private final GPURepository gpuRepository;
     private final ModelMapper modelMapper;
 
-    public GpuService(GPURepository gpuRepository, ModelMapper modelMapper) {
+    public GpuServiceImpl(GPURepository gpuRepository, ModelMapper modelMapper) {
         this.gpuRepository = gpuRepository;
         this.modelMapper = modelMapper;
     }
 
+    @Override
     public boolean saveGPU(GpuDTO gpuDTO) {
         try {
             GPU gpu = modelMapper.map(gpuDTO, GPU.class);
@@ -28,8 +28,9 @@ public class GpuService {
             return false;
         }
     }
-
-    public GPU getGPUById(long id) {
-        return gpuRepository.findById(id).orElseThrow(() -> new RuntimeException("GPU not found"));
+    @Override
+    public GPU getPartById(long id) {
+        return gpuRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("GPU not found with id: " + id));
     }
 }
