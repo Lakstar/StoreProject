@@ -59,6 +59,7 @@ public class UserService {
             throw new IllegalArgumentException("User role not found");
         }
 
+        userEntity.getRole().add(userRole);
 
         System.out.println("About to save");
 

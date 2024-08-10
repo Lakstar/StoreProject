@@ -14,6 +14,9 @@ public class Init implements CommandLineRunner {
     private final GPURepository gpuRepository;
     private final MemoryRepository memoryRepository;
     private final RAMRepository ramRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    private final UserRepository userRepository;
 
     private final UserRoleRepository userRoleRepository;
 
@@ -48,11 +51,13 @@ public class Init implements CommandLineRunner {
             "G.Skill Ripjaws V 8GB", RamType.DDR4
     );
 
-    public Init(CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
+    public Init(CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, PasswordEncoder passwordEncoder1, UserRepository userRepository1, UserRoleRepository userRoleRepository) {
         this.cpuRepository = cpuRepository;
         this.gpuRepository = gpuRepository;
         this.memoryRepository = memoryRepository;
         this.ramRepository = ramRepository;
+        this.passwordEncoder = passwordEncoder1;
+        this.userRepository = userRepository1;
         this.userRoleRepository = userRoleRepository;
     }
 
@@ -102,6 +107,20 @@ public class Init implements CommandLineRunner {
             for (UserRoles role : UserRoles.values()) {
                 userRoleRepository.save(new UserRoleEntity(role));
             }
+        }
+
+        if (userRepository.count() == 0) {
+            UserRoleEntity adminRole = userRoleRepository.findByUserRole(UserRoles.ADMIN);
+
+            UserEntity adminUser = new UserEntity();
+            adminUser.setUsername("admin");
+            adminUser.setEmail("admin@example.com");
+            adminUser.setPassword(passwordEncoder.encode("1q2w3e4r"));
+            adminUser.getRole().add(adminRole);
+
+            userRepository.save(adminUser);
+
+            System.out.println("Admin user created successfully.");
         }
 
     }

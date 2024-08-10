@@ -24,9 +24,10 @@ public class WebUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username)
-                .map(this::mapToUserDetails)
+        UserEntity userEntity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
+
+        return mapToUserDetails(userEntity);
     }
 
     private UserDetails mapToUserDetails(UserEntity userEntity) {

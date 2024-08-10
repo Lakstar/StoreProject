@@ -31,8 +31,14 @@
                     <a th:href="@{/cart}">Cart</a>
                 </li>
 
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/add}">Add Products</a>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
+                    <a class="dropdown-toggle" href="#" id="adminDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <a class="dropdown-item" th:href="@{/order-review}">Order Review</a>
+                        <a class="dropdown-item" th:href="@{/add}">Add Products</a>
+                    </div>
                 </li>
 
                 <li sec:authorize="!isAuthenticated()">

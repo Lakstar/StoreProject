@@ -37,7 +37,7 @@ public class UserController {
             model.addAttribute("registrationError", e.getMessage());
             return "register";
         }
-        return "index";
+        return "redirect:/";
     }
     @GetMapping("/login")
     public String showLoginForm(Model model) {
