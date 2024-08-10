@@ -9,9 +9,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import project.project.repository.UserRepository;
+import project.project.util.CustomAuthenticationSuccessHandler;
 
 @Configuration
 public class SecurityConfig {
+
+    private final CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    public SecurityConfig(CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler) {
+        this.customAuthenticationSuccessHandler = customAuthenticationSuccessHandler;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
@@ -29,7 +36,7 @@ public class SecurityConfig {
                                 .loginPage("/login")
                                 .usernameParameter("username")
                                 .passwordParameter("password")
-                                .defaultSuccessUrl("/", true)
+                                .successHandler(customAuthenticationSuccessHandler)
                                 .failureForwardUrl("/login")
                 )
                 .logout(logout ->

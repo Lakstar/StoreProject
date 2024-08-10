@@ -73,21 +73,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfoDTO getUserById(Long userId) {
-        UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        return new UserInfoDTO(user.getUsername(), user.getEmail());
+    public UserEntity getUserById(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
     }
 
-    @Override
-    public List<OrderInfoDTO> getOrdersByUserId(Long userId) {
-        UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        return user.getOrders().stream()
-                .map(pc -> new OrderInfoDTO(pc.getId(), pc.getName(), pc.getPrice()))
-                .collect(Collectors.toList());
+    public List<PC> getOrdersByUserId(Long userId) {
+        UserEntity user = getUserById(userId);
+        return user.getOrders();
     }
 
     @Override
@@ -110,11 +103,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserInfoDTO getUserByUsername(String username) {
-        UserEntity user = userRepository.findByUsername(username)
+    public UserEntity getUserByUsername(String username) {
+        return userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
-        return new UserInfoDTO(user.getUsername(), user.getEmail());
     }
 
     public Long getCurrentUserId() {

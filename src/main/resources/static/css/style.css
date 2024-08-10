@@ -292,3 +292,49 @@ h1 {
 .buy-button:hover {
     background-color: #218838;
 }
+
+.user-box, .orders-box {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.user-info p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #333;
+}
+
+.user-info strong {
+    color: #007bff;
+}
+
+.orders-box h2 {
+    margin-bottom: 20px;
+}
+
+.orders-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-box th, .orders-box td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.orders-box th {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.orders-box tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.orders-box tr:hover {
+    background-color: #f1f1f1;
+}

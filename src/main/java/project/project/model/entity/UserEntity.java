@@ -21,9 +21,7 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @ManyToMany(
-            fetch = FetchType.EAGER
-    )
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name="users_roles",
             joinColumns = @JoinColumn(name="user_id"),
@@ -31,7 +29,7 @@ public class UserEntity {
     )
     private List<UserRoleEntity> role = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "orders",
             joinColumns = @JoinColumn(name = "user_id"),

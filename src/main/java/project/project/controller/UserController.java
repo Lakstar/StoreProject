@@ -1,16 +1,16 @@
 package project.project.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import project.project.model.dto.OrderInfoDTO;
 import project.project.model.dto.RegisterDTO;
 import project.project.model.dto.UserInfoDTO;
+import project.project.model.entity.PC;
+import project.project.model.entity.UserEntity;
 import project.project.service.impl.UserServiceImpl;
 
 import java.util.List;
@@ -48,25 +48,17 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/user/{userId}")
-    public String getUserPage(@PathVariable("userId") Long userId, Model model) {
-        UserInfoDTO user = userServiceImpl.getUserById(userId);
-        List<OrderInfoDTO> orders = userServiceImpl.getOrdersByUserId(userId);
-
-        model.addAttribute("user", user);
-        model.addAttribute("orders", orders);
-
-        return "user";
-    }
     @GetMapping("/user")
-    public String getUserPage(Model model) {
-        Long userId = userServiceImpl.getCurrentUserId(); // Get the current user ID from the security context
-        UserInfoDTO user = userServiceImpl.getUserById(userId);
-        List<OrderInfoDTO> orders = userServiceImpl.getOrdersByUserId(userId);
+    public String getUserPage(@RequestParam("userId") Long userId, Model model) {
+            UserEntity user = userServiceImpl.getUserById(userId);
+            List<PC> orders = userServiceImpl.getOrdersByUserId(userId);
 
-        model.addAttribute("user", user);
-        model.addAttribute("orders", orders);
-
-        return "user";
+            if (user == null) {
+                model.addAttribute("error", "User not found");
+                return "login";
+            }
+            model.addAttribute("user", user);
+            model.addAttribute("orders", orders);
+            return "user";
     }
 }

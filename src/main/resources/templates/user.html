@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/common :: head}"></head>
+
+<body>
+<header th:replace="~{fragments/common :: nav}"></header>
+
+<main>
+    <div class="container">
+        <div class="user-box">
+            <h1>User Details</h1>
+            <div class="user-info">
+                <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
+                <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+            </div>
+        </div>
+
+        <div class="orders-box">
+            <h2>Orders</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.id}"></td>
+                    <td th:text="${order.name}"></td>
+                    <td th:text="${order.price}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/common :: footer}"></footer>
+</body>
+</html>

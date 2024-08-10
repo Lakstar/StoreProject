@@ -20,7 +20,7 @@
                 </li>
 
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/user}">User</a>
+                    <a th:href="@{/user(userId=${session.userId})}">User</a>
                 </li>
 
                 <li sec:authorize="isAuthenticated()">

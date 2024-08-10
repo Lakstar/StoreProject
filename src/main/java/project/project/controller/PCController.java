@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.project.model.dto.PcDTO;
 import project.project.model.entity.PC;
+import project.project.model.entity.UserEntity;
 import project.project.repository.CPURepository;
 import project.project.repository.GPURepository;
 import project.project.repository.MemoryRepository;
 import project.project.repository.RAMRepository;
 import project.project.service.impl.*;
+
+import java.security.Principal;
 
 @Controller
 public class PCController {
@@ -71,22 +74,12 @@ public class PCController {
     }
 
     @PostMapping("/shop/buy")
-    public String buyPC(@RequestParam("pcId") Long pcId, HttpSession session, RedirectAttributes redirectAttributes) {
-        Long userId = (Long) session.getAttribute("userId");
-
-        if (userId == null) {
-            redirectAttributes.addFlashAttribute("errorMessage", "You need to log in first.");
-            return "redirect:/login";
+    public String buyPC(@RequestParam("pcId") Long pcId, Principal principal) {
+        String username = principal.getName();
+        UserEntity user = userServiceImpl.getUserByUsername(username);
+        if (user != null) {
+            userServiceImpl.addPCToUserOrders(user.getId(), pcId);
         }
-
-        boolean success = userServiceImpl.addPCToUserOrders(userId, pcId);
-
-        if (success) {
-            redirectAttributes.addFlashAttribute("successMessage", "PC purchased successfully!");
-        } else {
-            redirectAttributes.addFlashAttribute("errorMessage", "Error purchasing PC.");
-        }
-
-        return "redirect:/pcs";
+        return "redirect:/";
     }
 }

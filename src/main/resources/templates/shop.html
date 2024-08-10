@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/common :: head}"></head>
-
 <body>
 <header th:replace="~{fragments/common :: nav}"></header>
 
+<main>
+    <div class="container">
+        <h1>PCs Available</h1>
+        <div th:each="pc : ${pcs}" class="pc-card">
+            <h2 th:text="${pc.name}" class="pc-title"></h2>
+            <div class="pc-details">
+                <div class="pc-section">
+                    <p><strong>PC Type:</strong> <span th:text="${pc.pcType}"></span></p>
+                </div>
+
+                <div class="pc-section">
+                    <p><strong>CPU:</strong></p>
+                    <p>Name: <span th:text="${pc.cpu.name}"></span></p>
+                    <p>Type: <span th:text="${pc.cpu.cpuType}"></span></p>
+                </div>
+
+                <div class="pc-section">
+                    <p><strong>GPU:</strong></p>
+                    <p>Name: <span th:text="${pc.gpu.name}"></span></p>
+                    <p>VRAM: <span th:text="${pc.gpu.gpuRam}"></span> GB</p>
+                </div>
+
+                <div class="pc-section">
+                    <p><strong>Memory:</strong></p>
+                    <p>Name: <span th:text="${pc.memory.name}"></span></p>
+                    <p>Memory Type: <span th:text="${pc.memory.memoryType}"></span></p>
+                    <p>Size: <span th:text="${pc.memory.size}"></span> GB</p>
+                </div>
+
+                <div class="pc-section">
+                    <p><strong>RAM:</strong></p>
+                    <p>Name: <span th:text="${pc.ram.name}"></span></p>
+                    <p>Speed: <span th:text="${pc.ram.type}"></span></p>
+                    <p>Size: <span th:text="${pc.ram.size.getSize()}"></span> GB</p>
+                </div>
+
+                <form th:action="@{/shop/buy}" method="post">
+                    <input type="hidden" name="pcId" th:value="${pc.id}" />
+                    <button type="submit" class="buy-button">Buy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
 
 <footer th:replace="~{fragments/common :: footer}"></footer>
 </body>
-
 </html>
