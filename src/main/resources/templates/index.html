@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="~{fragments/common :: head}"></head>
 
-    <body>
-        <header th:replace="~{fragments/common :: nav}"></header>
+<body>
+<header th:replace="~{fragments/common :: nav}"></header>
 
-        <main class="main-content">
-            <div class="text-container">
-                <h1>
-                    <a th:href="@{/cart}">Everything can be found here! Enjoy your shopping!</a>
-                </h1>
-            </div>
-        </main>
+<main class="index-container">
+    <div class="index-text-box-welcome">
+        <h1 th:text="${welcomeMessage}"></h1>
+    </div>
+    <div class="index-content">
+        <div class="index-text-box">
+            <a th:href="@{/cart}">Everything can be found here! Enjoy your shopping!</a>
+        </div>
+    </div>
+</main>
 
-        <footer th:replace="~{fragments/common :: footer}"></footer>
-    </body>
-
+<footer th:replace="~{fragments/common :: footer}"></footer>
+</body>
 </html>

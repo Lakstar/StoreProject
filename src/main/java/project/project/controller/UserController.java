@@ -27,11 +27,13 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(@ModelAttribute("user") RegisterDTO registerDTO, BindingResult result, Model model) {
         if (result.hasErrors()) {
+            System.out.println("Validation errors: " + result.getAllErrors());
             return "register";
         }
         try {
             userService.register(registerDTO);
         } catch (IllegalArgumentException e) {
+            System.out.println("Registration error: " + e.getMessage());
             model.addAttribute("registrationError", e.getMessage());
             return "register";
         }

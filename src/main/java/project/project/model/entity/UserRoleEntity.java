@@ -20,7 +20,9 @@ public class UserRoleEntity {
         this.userRole=userRoles;
     }
 
+    public UserRoleEntity() {
 
+    }
     public void setId(Long id) {
         this.id = id;
     }

@@ -3,10 +3,7 @@ package project.project.init;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
-import project.project.model.enums.CPUType;
-import project.project.model.enums.MemoryType;
-import project.project.model.enums.RamSizes;
-import project.project.model.enums.RamType;
+import project.project.model.enums.*;
 import project.project.repository.*;
 import project.project.model.entity.*;
 import java.util.Map;
@@ -17,6 +14,8 @@ public class Init implements CommandLineRunner {
     private final GPURepository gpuRepository;
     private final MemoryRepository memoryRepository;
     private final RAMRepository ramRepository;
+
+    private final UserRoleRepository userRoleRepository;
 
     private final Map<String, CPUType> defaultCPUs = Map.of(
             "Intel Core i3 13330H", CPUType.I3,
@@ -49,11 +48,12 @@ public class Init implements CommandLineRunner {
             "G.Skill Ripjaws V 8GB", RamType.DDR4
     );
 
-    public Init(CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public Init(CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository, UserRepository userRepository, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository) {
         this.cpuRepository = cpuRepository;
         this.gpuRepository = gpuRepository;
         this.memoryRepository = memoryRepository;
         this.ramRepository = ramRepository;
+        this.userRoleRepository = userRoleRepository;
     }
 
 
@@ -95,6 +95,12 @@ public class Init implements CommandLineRunner {
                 ram.setSize(defaultRAMs.get(name));
                 ram.setType(ramTypes.get(name));
                 ramRepository.save(ram);
+            }
+        }
+
+        if (userRoleRepository.count() == 0) {
+            for (UserRoles role : UserRoles.values()) {
+                userRoleRepository.save(new UserRoleEntity(role));
             }
         }
 
