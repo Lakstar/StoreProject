@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 @Configuration
@@ -18,10 +19,12 @@ public class i18NConfig {
     }
     @Bean
     public LocaleResolver localeResolver(){
-
+        return new CookieLocaleResolver("lang");
     }
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor(){
-
+        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        localeChangeInterceptor.setParamName("lang");
+        return localeChangeInterceptor;
     }
 }
