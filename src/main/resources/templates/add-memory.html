@@ -7,24 +7,24 @@
 
 <main class="main-add">
     <div class="add-box">
-        <h2>Add Memory to the Shop:</h2>
+        <h2 th:text="#{add_memory_title}">Add Memory to the Shop:</h2>
         <form th:action="@{/add/add-memoryEntity}" th:object="${memoryData}" method="post">
             <div class="form-group">
-                <label for="name" class="h3 mb-2">Name</label>
+                <label for="name" class="h3 mb-2" th:text="#{memory_name_label}">Name</label>
                 <input type="text" class="form-control" id="name" th:field="*{name}" required/>
             </div>
             <div class="form-group">
-                <label for="type" class="h3 mb-2">Type</label>
+                <label for="type" class="h3 mb-2" th:text="#{memory_type_label}">Type</label>
                 <select class="form-control" id="type" th:field="*{type}" required>
                     <option th:each="type : ${memoryTypes}" th:value="${type}" th:text="${type}"></option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="size" class="h3 mb-2">Size (GB)</label>
+                <label for="size" class="h3 mb-2" th:text="#{memory_size_label}">Size (GB)</label>
                 <input type="number" class="form-control" id="size" th:field="*{size}" required/>
             </div>
             <div class="button-holder d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Add Memory</button>
+                <button type="submit" class="btn btn-primary" th:text="#{add_memory_button}">Add Memory</button>
             </div>
         </form>
     </div>

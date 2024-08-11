@@ -7,33 +7,33 @@
 
 <main class="main-add">
     <div class="add-box">
-        <h2>Add RAM to the shop:</h2>
+        <h2 th:text="#{add_ram_title}">Add RAM to the shop:</h2>
         <div class="form-container">
             <form th:action="@{/add/add-ramEntity}" method="post" th:object="${ramData}">
                 <div class="form-group">
-                    <label for="name" class="h3 mb-2">RAM Name</label>
+                    <label for="name" class="h3 mb-2" th:text="#{ram_name_label}">RAM Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
                 </div>
                 <div class="form-group">
-                    <label for="size" class="h3 mb-2">RAM Size</label>
+                    <label for="size" class="h3 mb-2" th:text="#{ram_size_label}">RAM Size</label>
                     <select class="form-control" id="size" name="size" th:field="*{size}" required>
-                        <option value="" disabled>Select RAM Size</option>
+                        <option value="" disabled th:text="#{select_ram_size}">Select RAM Size</option>
                         <option th:each="size : ${ramSizes}"
                                 th:value="${size}"
                                 th:text="#{${size.toString()}}"></option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="type" class="h3 mb-2">RAM Type</label>
+                    <label for="type" class="h3 mb-2" th:text="#{ram_type_label}">RAM Type</label>
                     <select class="form-control" id="type" name="type" th:field="*{type}" required>
-                        <option value="" disabled>Select RAM Type</option>
+                        <option value="" disabled th:text="#{select_ram_type}">Select RAM Type</option>
                         <option th:each="type : ${ramTypes}"
                                 th:value="${type}"
                                 th:text="#{${type.name()}}"></option>
                     </select>
                 </div>
                 <div class="button-holder d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Add RAM</button>
+                    <button type="submit" class="btn btn-primary" th:text="#{add_ram_button}">Add RAM</button>
                 </div>
             </form>
         </div>

@@ -7,9 +7,8 @@
 
 <main class="main-add">
     <div class="add-box">
-        <h2>Add a PC to the shop:</h2>
+        <h2 th:text="#{add_pc_title}">Add a PC to the shop:</h2>
         <div class="form-container">
-            <!-- Display validation errors if any -->
             <div th:if="${errors != null}">
                 <div th:each="error : ${errors}" class="alert alert-danger">
                     <span th:text="${error.defaultMessage}"></span>
@@ -18,14 +17,14 @@
 
             <form th:action="@{/add/add-pc}" method="post" th:object="${pc}">
                 <div class="form-group">
-                    <label for="name" class="h3 mb-2">PC Name</label>
+                    <label for="name" class="h3 mb-2" th:text="#{pc_name_label}">PC Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
                 </div>
 
                 <div class="form-group">
-                    <label for="cpuEntity" class="h3 mb-2">CPU</label>
+                    <label for="cpuEntity" class="h3 mb-2" th:text="#{cpu_label}">CPU</label>
                     <select class="form-control" id="cpuEntity" name="cpuId" th:field="*{cpuId}" required>
-                        <option value="" disabled>Select CPU</option>
+                        <option value="" disabled th:text="#{select_cpu}">Select CPU</option>
                         <option th:each="cpuEntity : ${cpus}"
                                 th:value="${cpuEntity.id}"
                                 th:text="${cpuEntity.name}"></option>
@@ -33,9 +32,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gpuEntity" class="h3 mb-2">GPU</label>
+                    <label for="gpuEntity" class="h3 mb-2" th:text="#{gpu_label}">GPU</label>
                     <select class="form-control" id="gpuEntity" name="gpuId" th:field="*{gpuId}" required>
-                        <option value="" disabled>Select GPU</option>
+                        <option value="" disabled th:text="#{select_gpu}">Select GPU</option>
                         <option th:each="gpuEntity : ${gpus}"
                                 th:value="${gpuEntity.id}"
                                 th:text="${gpuEntity.name}"></option>
@@ -43,9 +42,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="memoryEntity" class="h3 mb-2">Memory</label>
+                    <label for="memoryEntity" class="h3 mb-2" th:text="#{memory_label}">Memory</label>
                     <select class="form-control" id="memoryEntity" name="memoryId" th:field="*{memoryId}" required>
-                        <option value="" disabled>Select Memory</option>
+                        <option value="" disabled th:text="#{select_memory}">Select Memory</option>
                         <option th:each="memoryEntity : ${memories}"
                                 th:value="${memoryEntity.id}"
                                 th:text="${memoryEntity.name}"></option>
@@ -53,9 +52,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="ramEntity" class="h3 mb-2">RAM</label>
+                    <label for="ramEntity" class="h3 mb-2" th:text="#{ram_label}">RAM</label>
                     <select class="form-control" id="ramEntity" name="ramId" th:field="*{ramId}" required>
-                        <option value="" disabled>Select RAM</option>
+                        <option value="" disabled th:text="#{select_ram}">Select RAM</option>
                         <option th:each="ramEntity : ${rams}"
                                 th:value="${ramEntity.id}"
                                 th:text="${ramEntity.name}"></option>
@@ -63,9 +62,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="pcType" class="h3 mb-2">PC Type</label>
+                    <label for="pcType" class="h3 mb-2" th:text="#{pc_type_label}">PC Type</label>
                     <select class="form-control" id="pcType" name="pcType" th:field="*{pcType}" required>
-                        <option value="" disabled>Select PC Type</option>
+                        <option value="" disabled th:text="#{select_pc_type}">Select PC Type</option>
                         <option th:each="type : ${pcTypes}"
                                 th:value="${type.name()}"
                                 th:text="${type.name()}"></option>
@@ -73,12 +72,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="price" class="h3 mb-2">Price</label>
+                    <label for="price" class="h3 mb-2" th:text="#{price_label}">Price</label>
                     <input type="number" class="form-control" id="price" name="price" th:field="*{price}" step="0.01" required/>
                 </div>
 
                 <div class="button-holder">
-                    <button type="submit" class="btn btn-primary">Add PC</button>
+                    <button type="submit" class="btn btn-primary" th:text="#{add_pc_button}">Add PC</button>
                 </div>
             </form>
         </div>

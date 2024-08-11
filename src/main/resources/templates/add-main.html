@@ -3,25 +3,25 @@
 <head th:replace="~{fragments/common :: head}"></head>
 
 <body>
-    <header th:replace="~{fragments/common :: nav}"></header>
+<header th:replace="~{fragments/common :: nav}"></header>
 
-    <main class="main-add">
-        <div class="add-box">
-            <h2>Add a product to the shop:</h2>
-            <div class="button-container">
-                <a th:href="@{/add/add-gpuEntity}"
-                   class="add-button">Add GPU</a>
-                <a th:href="@{/add/add-cpuEntity}"
-                   class="add-button">Add CPU</a>
-                <a th:href="@{/add/add-pc}"
-                   class="add-button">Add PC</a>
-                <a th:href="@{/add/add-ramEntity}"
-                   class="add-button">Add RAM</a>
-                <a th:href="@{/add/add-memoryEntity}"
-                   class="add-button">Add Memory</a>
-            </div>
+<main class="main-add">
+    <div class="add-box">
+        <h2 th:text="#{add_product_title}">Add a product to the shop:</h2>
+        <div class="button-container">
+            <a th:href="@{/add/add-gpuEntity}"
+               class="add-button" th:text="#{add_gpu_button}">Add GPU</a>
+            <a th:href="@{/add/add-cpuEntity}"
+               class="add-button" th:text="#{add_cpu_button}">Add CPU</a>
+            <a th:href="@{/add/add-pc}"
+               class="add-button" th:text="#{add_pc_button}">Add PC</a>
+            <a th:href="@{/add/add-ramEntity}"
+               class="add-button" th:text="#{add_ram_button}">Add RAM</a>
+            <a th:href="@{/add/add-memoryEntity}"
+               class="add-button" th:text="#{add_memory_button}">Add Memory</a>
         </div>
-    </main>
+    </div>
+</main>
 
 <footer th:replace="~{fragments/common :: footer}"></footer>
 </body>

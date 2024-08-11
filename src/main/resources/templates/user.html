@@ -8,21 +8,21 @@
 <main>
     <div class="container">
         <div class="user-box">
-            <h1>User Details</h1>
+            <h1 th:text="#{user_details}">User Details</h1>
             <div class="user-info">
-                <p><strong>Username:</strong> <span th:text="${user.username}"></span></p>
-                <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+                <p><strong th:text="#{username}">Username:</strong> <span th:text="${user.username}"></span></p>
+                <p><strong th:text="#{email}">Email:</strong> <span th:text="${user.email}"></span></p>
             </div>
         </div>
 
         <div class="orders-box">
-            <h2>Orders</h2>
+            <h2 th:text="#{orders}">Orders</h2>
             <table>
                 <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th th:text="#{order_id}">Order ID</th>
+                    <th th:text="#{name}">Name</th>
+                    <th th:text="#{price}">Price</th>
                 </tr>
                 </thead>
                 <tbody>
