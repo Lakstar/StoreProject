@@ -8,7 +8,7 @@ public class GpuDTO {
     @NotEmpty(message = "Name is required")
     private String name;
 
-    @Min(value = 1, message = "RAM must be at least 1 GB")
+    @Min(value = 1, message = "RamEntity must be at least 1 GB")
     private int gpuRam;
 
     public String getName() {

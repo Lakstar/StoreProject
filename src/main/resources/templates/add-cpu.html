@@ -9,7 +9,7 @@
     <div class="add-box">
         <h2>Add a CPU to the shop:</h2>
         <div class="form-container">
-            <form th:action="@{/add/add-cpu}" method="post" th:object="${cpuData}">
+            <form th:action="@{/add/add-cpuEntity}" method="post" th:object="${cpuData}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2">CPU Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>

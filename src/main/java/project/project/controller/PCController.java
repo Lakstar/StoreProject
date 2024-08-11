@@ -1,6 +1,5 @@
 package project.project.controller;
 
-import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,7 +44,7 @@ public class PCController {
     public String showAddPcForm(Model model) {
         model= pcServiceImpl.getData(model);
         model.addAttribute("pc", new PcDTO());
-        return "addLaptop";
+        return "add-pc";
     }
 
     @PostMapping("/add/add-pc")
@@ -56,7 +55,7 @@ public class PCController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("pc", pcDTO);
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "addLaptop";
+            return "add-pc";
         }
 
         PC pc = new PC();

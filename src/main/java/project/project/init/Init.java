@@ -84,39 +84,39 @@ public class Init implements CommandLineRunner {
 
         if (cpuRepository.count() == 0) {
             for (Map.Entry<String, CPUType> entry : defaultCPUs.entrySet()) {
-                CPU cpu = new CPU();
-                cpu.setName(entry.getKey());
-                cpu.setCpuType(entry.getValue());
-                cpuRepository.save(cpu);
+                CpuEntity cpuEntity = new CpuEntity();
+                cpuEntity.setName(entry.getKey());
+                cpuEntity.setCpuType(entry.getValue());
+                cpuRepository.save(cpuEntity);
             }
         }
 
         if (gpuRepository.count() == 0) {
             for (Map.Entry<String, Integer> entry : defaultGPUs.entrySet()) {
-                GPU gpu = new GPU();
-                gpu.setName(entry.getKey());
-                gpu.setGpuRam(entry.getValue());
-                gpuRepository.save(gpu);
+                GpuEntity gpuEntity = new GpuEntity();
+                gpuEntity.setName(entry.getKey());
+                gpuEntity.setGpuRam(entry.getValue());
+                gpuRepository.save(gpuEntity);
             }
         }
 
         if (memoryRepository.count() == 0) {
             for (String name : defaultMemories.keySet()) {
-                Memory memory = new Memory();
-                memory.setName(name);
-                memory.setMemoryType(defaultMemories.get(name));
-                memory.setSize(memorySizes.get(name));
-                memoryRepository.save(memory);
+                MemoryEntity memoryEntity = new MemoryEntity();
+                memoryEntity.setName(name);
+                memoryEntity.setMemoryType(defaultMemories.get(name));
+                memoryEntity.setSize(memorySizes.get(name));
+                memoryRepository.save(memoryEntity);
             }
         }
 
         if (ramRepository.count() == 0) {
             for (String name : defaultRAMs.keySet()) {
-                RAM ram = new RAM();
-                ram.setName(name);
-                ram.setSize(defaultRAMs.get(name));
-                ram.setType(ramTypes.get(name));
-                ramRepository.save(ram);
+                RamEntity ramEntity = new RamEntity();
+                ramEntity.setName(name);
+                ramEntity.setSize(defaultRAMs.get(name));
+                ramEntity.setType(ramTypes.get(name));
+                ramRepository.save(ramEntity);
             }
         }
 

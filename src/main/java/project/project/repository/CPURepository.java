@@ -1,7 +1,9 @@
 package project.project.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import project.project.model.entity.CPU;
+import org.springframework.stereotype.Repository;
+import project.project.model.entity.CpuEntity;
 
-public interface CPURepository extends JpaRepository<CPU, Long> {
+@Repository
+public interface CPURepository extends JpaRepository<CpuEntity, Long> {
 }

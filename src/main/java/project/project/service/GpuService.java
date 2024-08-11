@@ -1,9 +1,9 @@
 package project.project.service;
 
 import project.project.model.dto.GpuDTO;
-import project.project.model.entity.GPU;
+import project.project.model.entity.GpuEntity;
 
 public interface GpuService {
     public boolean saveGPU(GpuDTO gpuDTO);
-    public GPU getPartById(long id);
+    public GpuEntity getPartById(long id);
 }

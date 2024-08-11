@@ -3,7 +3,7 @@ package project.project.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import project.project.model.dto.CpuDTO;
-import project.project.model.entity.CPU;
+import project.project.model.entity.CpuEntity;
 import project.project.repository.CPURepository;
 import project.project.service.CpuService;
 
@@ -20,8 +20,8 @@ public class CpuServiceImpl implements CpuService {
     @Override
     public boolean save(CpuDTO cpuDTO) {
         try {
-            CPU cpu = modelMapper.map(cpuDTO, CPU.class);
-            cpuRepository.save(cpu);
+            CpuEntity cpuEntity = modelMapper.map(cpuDTO, CpuEntity.class);
+            cpuRepository.save(cpuEntity);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -30,8 +30,8 @@ public class CpuServiceImpl implements CpuService {
     }
 
     @Override
-    public CPU getPartById(long id) {
+    public CpuEntity getPartById(long id) {
         return cpuRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("CPU not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("CpuEntity not found with id: " + id));
     }
 }

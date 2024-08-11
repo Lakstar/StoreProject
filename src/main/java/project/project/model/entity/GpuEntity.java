@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="gpus")
-public class GPU {
+public class GpuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

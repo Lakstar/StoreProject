@@ -14,16 +14,16 @@ public class PC {
     private String name;
 
     @ManyToOne(optional = false)
-    private CPU cpu;
+    private CpuEntity cpuEntity;
 
     @ManyToOne(optional = false)
-    private GPU gpu;
+    private GpuEntity gpuEntity;
 
     @ManyToOne(optional = false)
-    private Memory memory;
+    private MemoryEntity memoryEntity;
 
     @ManyToOne(optional = false)
-    private RAM ram;
+    private RamEntity ramEntity;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -48,36 +48,36 @@ public class PC {
         this.name = name;
     }
 
-    public CPU getCpu() {
-        return cpu;
+    public CpuEntity getCpu() {
+        return cpuEntity;
     }
 
-    public void setCpu(CPU cpu) {
-        this.cpu = cpu;
+    public void setCpu(CpuEntity cpuEntity) {
+        this.cpuEntity = cpuEntity;
     }
 
-    public GPU getGpu() {
-        return gpu;
+    public GpuEntity getGpu() {
+        return gpuEntity;
     }
 
-    public void setGpu(GPU gpu) {
-        this.gpu = gpu;
+    public void setGpu(GpuEntity gpuEntity) {
+        this.gpuEntity = gpuEntity;
     }
 
-    public Memory getMemory() {
-        return memory;
+    public MemoryEntity getMemory() {
+        return memoryEntity;
     }
 
-    public void setMemory(Memory memory) {
-        this.memory = memory;
+    public void setMemory(MemoryEntity memoryEntity) {
+        this.memoryEntity = memoryEntity;
     }
 
-    public RAM getRam() {
-        return ram;
+    public RamEntity getRam() {
+        return ramEntity;
     }
 
-    public void setRam(RAM ram) {
-        this.ram = ram;
+    public void setRam(RamEntity ramEntity) {
+        this.ramEntity = ramEntity;
     }
 
     public PCType getPcType() {

@@ -23,12 +23,12 @@ public class HomeController {
     @GetMapping("/debug-session")
     public String debugSession(HttpSession session, Model model) {
         model.addAttribute("sessionUserId", session.getAttribute("userId"));
-        return "debugSession";
+        return "debug-session";
     }
 
     @GetMapping("/add")
     public String add(Model model) {
-        return "addMain";
+        return "add-main";
     }
 
 }

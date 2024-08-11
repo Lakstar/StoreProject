@@ -9,7 +9,7 @@
     <div class="add-box">
         <h2>Add RAM to the shop:</h2>
         <div class="form-container">
-            <form th:action="@{/add/add-ram}" method="post" th:object="${ramData}">
+            <form th:action="@{/add/add-ramEntity}" method="post" th:object="${ramData}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2">RAM Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>

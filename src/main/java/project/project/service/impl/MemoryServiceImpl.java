@@ -3,7 +3,7 @@ package project.project.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import project.project.model.dto.MemoryDTO;
-import project.project.model.entity.Memory;
+import project.project.model.entity.MemoryEntity;
 import project.project.repository.MemoryRepository;
 import project.project.service.MemoryService;
 
@@ -20,8 +20,8 @@ public class MemoryServiceImpl implements MemoryService {
     @Override
     public boolean save(MemoryDTO memoryDTO) {
         try {
-            Memory memory = modelMapper.map(memoryDTO, Memory.class);
-            memoryRepository.save(memory);
+            MemoryEntity memoryEntity = modelMapper.map(memoryDTO, MemoryEntity.class);
+            memoryRepository.save(memoryEntity);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -30,8 +30,8 @@ public class MemoryServiceImpl implements MemoryService {
     }
 
     @Override
-    public Memory getPartById(long id) {
+    public MemoryEntity getPartById(long id) {
         return memoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Memory not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("MemoryEntity not found with id: " + id));
     }
 }

@@ -6,7 +6,7 @@ import project.project.model.enums.RamType;
 
 @Entity
 @Table(name="ram")
-public class RAM {
+public class RamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

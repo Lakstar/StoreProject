@@ -23,42 +23,42 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cpu" class="h3 mb-2">CPU</label>
-                    <select class="form-control" id="cpu" name="cpuId" th:field="*{cpuId}" required>
+                    <label for="cpuEntity" class="h3 mb-2">CPU</label>
+                    <select class="form-control" id="cpuEntity" name="cpuId" th:field="*{cpuId}" required>
                         <option value="" disabled>Select CPU</option>
-                        <option th:each="cpu : ${cpus}"
-                                th:value="${cpu.id}"
-                                th:text="${cpu.name}"></option>
+                        <option th:each="cpuEntity : ${cpus}"
+                                th:value="${cpuEntity.id}"
+                                th:text="${cpuEntity.name}"></option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="gpu" class="h3 mb-2">GPU</label>
-                    <select class="form-control" id="gpu" name="gpuId" th:field="*{gpuId}" required>
+                    <label for="gpuEntity" class="h3 mb-2">GPU</label>
+                    <select class="form-control" id="gpuEntity" name="gpuId" th:field="*{gpuId}" required>
                         <option value="" disabled>Select GPU</option>
-                        <option th:each="gpu : ${gpus}"
-                                th:value="${gpu.id}"
-                                th:text="${gpu.name}"></option>
+                        <option th:each="gpuEntity : ${gpus}"
+                                th:value="${gpuEntity.id}"
+                                th:text="${gpuEntity.name}"></option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="memory" class="h3 mb-2">Memory</label>
-                    <select class="form-control" id="memory" name="memoryId" th:field="*{memoryId}" required>
+                    <label for="memoryEntity" class="h3 mb-2">Memory</label>
+                    <select class="form-control" id="memoryEntity" name="memoryId" th:field="*{memoryId}" required>
                         <option value="" disabled>Select Memory</option>
-                        <option th:each="memory : ${memories}"
-                                th:value="${memory.id}"
-                                th:text="${memory.name}"></option>
+                        <option th:each="memoryEntity : ${memories}"
+                                th:value="${memoryEntity.id}"
+                                th:text="${memoryEntity.name}"></option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="ram" class="h3 mb-2">RAM</label>
-                    <select class="form-control" id="ram" name="ramId" th:field="*{ramId}" required>
+                    <label for="ramEntity" class="h3 mb-2">RAM</label>
+                    <select class="form-control" id="ramEntity" name="ramId" th:field="*{ramId}" required>
                         <option value="" disabled>Select RAM</option>
-                        <option th:each="ram : ${rams}"
-                                th:value="${ram.id}"
-                                th:text="${ram.name}"></option>
+                        <option th:each="ramEntity : ${rams}"
+                                th:value="${ramEntity.id}"
+                                th:text="${ramEntity.name}"></option>
                     </select>
                 </div>
 

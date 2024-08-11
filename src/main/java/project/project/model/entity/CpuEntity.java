@@ -1,11 +1,11 @@
 package project.project.model.entity;
 
 import jakarta.persistence.*;
-import project.project.model.enums.MemoryType;
+import project.project.model.enums.CPUType;
 
 @Entity
-@Table(name="memories")
-public class Memory {
+@Table(name="cpus")
+public class CpuEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -15,10 +15,7 @@ public class Memory {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private MemoryType memoryType;
-
-    @Column(nullable = false)
-    private int size;
+    private CPUType cpuType;
 
     public long getId() {
         return id;
@@ -36,19 +33,11 @@ public class Memory {
         this.name = name;
     }
 
-    public MemoryType getMemoryType() {
-        return memoryType;
+    public CPUType getCpuType() {
+        return cpuType;
     }
 
-    public void setMemoryType(MemoryType memoryType) {
-        this.memoryType = memoryType;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
+    public void setCpuType(CPUType cpuType) {
+        this.cpuType = cpuType;
     }
 }

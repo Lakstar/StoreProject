@@ -9,7 +9,7 @@
     <div class="add-box">
         <h2>Add a GPU to the shop:</h2>
         <div class="form-container">
-            <form th:action="@{/add/add-gpu}" method="post" th:object="${gpuData}">
+            <form th:action="@{/add/add-gpuEntity}" method="post" th:object="${gpuData}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2">GPU Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>

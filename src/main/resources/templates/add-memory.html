@@ -8,7 +8,7 @@
 <main class="main-add">
     <div class="add-box">
         <h2>Add Memory to the Shop:</h2>
-        <form th:action="@{/add/add-memory}" th:object="${memoryData}" method="post">
+        <form th:action="@{/add/add-memoryEntity}" th:object="${memoryData}" method="post">
             <div class="form-group">
                 <label for="name" class="h3 mb-2">Name</label>
                 <input type="text" class="form-control" id="name" th:field="*{name}" required/>

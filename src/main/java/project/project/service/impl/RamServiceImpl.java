@@ -3,7 +3,7 @@ package project.project.service.impl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import project.project.model.dto.RamDTO;
-import project.project.model.entity.RAM;
+import project.project.model.entity.RamEntity;
 import project.project.repository.RAMRepository;
 import project.project.service.RamService;
 
@@ -20,8 +20,8 @@ public class RamServiceImpl implements RamService {
     @Override
     public boolean save(RamDTO ramDTO) {
         try {
-            RAM ram = modelMapper.map(ramDTO, RAM.class);
-            ramRepository.save(ram);
+            RamEntity ramEntity = modelMapper.map(ramDTO, RamEntity.class);
+            ramRepository.save(ramEntity);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -30,9 +30,9 @@ public class RamServiceImpl implements RamService {
     }
 
     @Override
-    public RAM getPartById(long id) {
+    public RamEntity getPartById(long id) {
         return ramRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("RAM not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("RamEntity not found with id: " + id));
     }
 
 }

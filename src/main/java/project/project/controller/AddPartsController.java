@@ -41,7 +41,7 @@ public class AddPartsController {
         model.addAttribute("ramData", new RamDTO());
         model.addAttribute("ramSizes", RamSizes.values());
         model.addAttribute("ramTypes", RamType.values());
-        return "addRAM";
+        return "add-ram";
     }
 
     @PostMapping("/add/add-ram")
@@ -65,7 +65,7 @@ public class AddPartsController {
     public String showAddCpuForm(Model model) {
         model.addAttribute("cpuData", new CpuDTO());
         model.addAttribute("cpuTypes", CPUType.values());
-        return "addCPU";
+        return "add-cpu";
     }
 
     @PostMapping("/add/add-cpu")
@@ -91,7 +91,7 @@ public class AddPartsController {
         if (!model.containsAttribute("gpuData")) {
             model.addAttribute("gpuData", new GpuDTO());
         }
-        return "addGpu";
+        return "add-gpu";
     }
 
     @PostMapping("/add/add-gpu")
@@ -116,7 +116,7 @@ public class AddPartsController {
     public String showAddMemoryForm(Model model) {
         model.addAttribute("memoryData", new MemoryDTO());
         model.addAttribute("memoryTypes", MemoryType.values());
-        return "addMemory";
+        return "add-memory";
     }
 
     @PostMapping("/add/add-memory")

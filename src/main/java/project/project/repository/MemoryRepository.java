@@ -1,7 +1,9 @@
 package project.project.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import project.project.model.entity.Memory;
+import org.springframework.stereotype.Repository;
+import project.project.model.entity.MemoryEntity;
 
-public interface MemoryRepository extends JpaRepository<Memory, Long> {
+@Repository
+public interface MemoryRepository extends JpaRepository<MemoryEntity, Long> {
 }
