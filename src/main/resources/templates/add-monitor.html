@@ -10,7 +10,7 @@
     <div class="add-box">
         <h2 th:text="#{add_monitor_title}">Add a Monitor to the shop:</h2>
         <div class="form-container">
-            <form th:action="@{/monitors}" method="post" th:object="${monitorData}">
+            <form th:action="@{/add/add-monitor}" method="post" th:object="${monitorData}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2" th:text="#{monitor_name_label}">Monitor Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required />

@@ -8,10 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import project.project.model.dto.CpuDTO;
-import project.project.model.dto.GpuDTO;
-import project.project.model.dto.MemoryDTO;
-import project.project.model.dto.RamDTO;
+import project.project.model.dto.*;
 import project.project.model.enums.CPUType;
 import project.project.model.enums.MemoryType;
 import project.project.model.enums.RamSizes;
@@ -43,6 +40,25 @@ public class AddPartsController {
         model.addAttribute("ramTypes", RamType.values());
         return "add-ram";
     }
+    @GetMapping("/add/add-cpu")
+    public String showAddCpuForm(Model model) {
+        model.addAttribute("cpuData", new CpuDTO());
+        model.addAttribute("cpuTypes", CPUType.values());
+        return "add-cpu";
+    }
+    @GetMapping("/add/add-gpu")
+    public String showAddGPUForm(Model model) {
+        if (!model.containsAttribute("gpuData")) {
+            model.addAttribute("gpuData", new GpuDTO());
+        }
+        return "add-gpu";
+    }
+    @GetMapping("/add/add-memory")
+    public String showAddMemoryForm(Model model) {
+        model.addAttribute("memoryData", new MemoryDTO());
+        model.addAttribute("memoryTypes", MemoryType.values());
+        return "add-memory";
+    }
 
     @PostMapping("/add/add-ram")
     public String addRam(@Valid @ModelAttribute("ramData") RamDTO ramDTO,
@@ -60,12 +76,6 @@ public class AddPartsController {
             return "redirect:/add/add-ram";
         }
         return "redirect:/add";
-    }
-    @GetMapping("/add/add-cpu")
-    public String showAddCpuForm(Model model) {
-        model.addAttribute("cpuData", new CpuDTO());
-        model.addAttribute("cpuTypes", CPUType.values());
-        return "add-cpu";
     }
 
     @PostMapping("/add/add-cpu")
@@ -86,14 +96,6 @@ public class AddPartsController {
         return "redirect:/add";
     }
 
-    @GetMapping("/add/add-gpu")
-    public String showAddGPUForm(Model model) {
-        if (!model.containsAttribute("gpuData")) {
-            model.addAttribute("gpuData", new GpuDTO());
-        }
-        return "add-gpu";
-    }
-
     @PostMapping("/add/add-gpu")
     public String addGPU(@Valid @ModelAttribute("gpuData") GpuDTO gpuDTO,
                          BindingResult bindingResult,
@@ -110,13 +112,6 @@ public class AddPartsController {
             return "redirect:/add/add-gpu";
         }
         return "redirect:/add";
-    }
-
-    @GetMapping("/add/add-memory")
-    public String showAddMemoryForm(Model model) {
-        model.addAttribute("memoryData", new MemoryDTO());
-        model.addAttribute("memoryTypes", MemoryType.values());
-        return "add-memory";
     }
 
     @PostMapping("/add/add-memory")
@@ -136,4 +131,6 @@ public class AddPartsController {
         }
         return "redirect:/add";
     }
+
+
 }

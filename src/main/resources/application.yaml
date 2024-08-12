@@ -33,4 +33,4 @@ server:
 
 monitors:
   api:
-    baseUrl: "http://localhost:8081/"
+    baseUrl: "http://localhost:8081"

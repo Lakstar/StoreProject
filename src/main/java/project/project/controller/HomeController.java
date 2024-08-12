@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import project.project.model.dto.CreateMonitorDTO;
 
 import java.security.Principal;
 
@@ -30,9 +31,4 @@ public class HomeController {
     public String add(Model model) {
         return "add-main";
     }
-    @GetMapping("/add/add-monitor")
-    public String addMonitor(Model model) {
-        return "add-monitor";
-    }
-
 }
