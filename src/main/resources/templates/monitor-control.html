@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<head th:replace="~{fragments/common :: head}"></head>
 
+<body>
+<header th:replace="~{fragments/common :: nav}"></header>
+<main>
+    <div class="container">
+        <h1 th:text="#{monitors_title}">Monitors Overview</h1>
+
+        <div class="category-box">
+            <h2 th:text="#{monitors_title}">Monitors</h2>
+            <div class="category-content">
+                <div th:each="monitor : ${monitors}" class="part-card">
+                    <div class="part-info">
+                        <p><strong>Monitor:</strong> <span th:text="${monitor.name}">Monitor Name</span></p>
+                        <p><strong>Size:</strong> <span th:text="${monitor.inches}">Size</span> inches</p>
+                        <p><strong>Description:</strong> <span th:text="${monitor.description}">Description</span></p>
+                    </div>
+                    <form th:action="@{'/edit/monitor/' + ${monitor.id}}" method="get">
+                        <input type="hidden" name="id" th:value="${monitor.id}" />
+                        <button type="submit" class="edit-button" th:text="#{edit_button}">Edit</button>
+                    </form>
+                    <form th:action="@{'/delete/monitor/' + ${monitor.id}}" method="post">
+                        <input type="hidden" name="id" th:value="${monitor.id}" />
+                        <button type="submit" class="delete-button" th:text="#{delete_button}">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

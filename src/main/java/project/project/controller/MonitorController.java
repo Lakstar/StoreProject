@@ -46,4 +46,33 @@ public class MonitorController {
         model.addAttribute("monitorData", new CreateMonitorDTO());
         return "add-monitor";
     }
+    @GetMapping("/view/monitors")
+    public String showMonitors(Model model) {
+        List<MonitorDTO> monitors = monitorService.getAllMonitors();
+        model.addAttribute("monitors", monitors);
+        return "monitor-control";
+    }
+
+    @PostMapping("/delete/monitor/{id}")
+    public String deleteMonitor(@PathVariable("id") Long id) {
+        monitorService.deleteMonitor(id);
+        return "redirect:/view/monitors";
+    }
+
+    @GetMapping("/edit/monitor/{id}")
+    public String showEditMonitorForm(@PathVariable("id") Long id, Model model) {
+        MonitorDTO monitor = monitorService.getMonitorById(id);
+        model.addAttribute("monitorData", monitor);
+        return "edit-monitor";
+    }
+
+    @PostMapping("/edit/monitor/{id}")
+    public String updateMonitor(@PathVariable("id") Long id, @Valid @ModelAttribute("monitorData") CreateMonitorDTO updateMonitorDTO,
+                                BindingResult result) {
+        if (result.hasErrors()) {
+            return "edit-monitor";
+        }
+        monitorService.updateMonitor(id, updateMonitorDTO);
+        return "redirect:/view/monitors";
+    }
 }

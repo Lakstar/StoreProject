@@ -32,7 +32,7 @@ public class PcServiceImpl implements PcService {
 
     @Override
     public List<PC> getAllPCs() {
-        return pcRepository.findAll();
+        return pcRepository.findAllWithDetails();
     }
 
     public Model getData(Model model){

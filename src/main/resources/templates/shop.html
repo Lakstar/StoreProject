@@ -10,31 +10,38 @@
         <div th:each="pc : ${pcs}" class="pc-card">
             <h2 th:text="${pc.name}" class="pc-title"></h2>
             <div class="pc-details">
+                <div>
+                    <p th:text="'CPU Entity: ' + ${pc.cpuEntity}"></p>
+                    <p th:text="'GPU Entity: ' + ${pc.gpuEntity}"></p>
+                    <p th:text="'Memory Entity: ' + ${pc.memoryEntity}"></p>
+                    <p th:text="'RAM Entity: ' + ${pc.ramEntity}"></p>
+                </div>
+
                 <div class="pc-section">
                     <p><strong th:text="#{pc_type}">PC Type:</strong> <span th:text="${pc.pcType}"></span></p>
                 </div>
 
                 <div class="pc-section">
-                    <p><strong th:text="#{cpu_name}">CPU:</strong></p>
+                    <p><strong th:text="#{cpu}">CPU:</strong></p>
                     <p th:text="#{cpu_name}">Name: <span th:text="${pc.cpuEntity.name}"></span></p>
                     <p th:text="#{cpu_type}">Type: <span th:text="${pc.cpuEntity.cpuType}"></span></p>
                 </div>
 
                 <div class="pc-section">
-                    <p><strong th:text="#{gpu_name}">GPU:</strong></p>
+                    <p><strong th:text="#{gpu}">GPU:</strong></p>
                     <p th:text="#{gpu_name}">Name: <span th:text="${pc.gpuEntity.name}"></span></p>
                     <p th:text="#{gpu_vram}">VRAM: <span th:text="${pc.gpuEntity.gpuRam}"></span> GB</p>
                 </div>
 
                 <div class="pc-section">
-                    <p><strong th:text="#{memory_name}">Memory:</strong></p>
+                    <p><strong th:text="#{memory}">Memory:</strong></p>
                     <p th:text="#{memory_name}">Name: <span th:text="${pc.memoryEntity.name}"></span></p>
                     <p th:text="#{memory_type}">Memory Type: <span th:text="${pc.memoryEntity.memoryType}"></span></p>
                     <p th:text="#{memory_size}">Size: <span th:text="${pc.memoryEntity.size}"></span> GB</p>
                 </div>
 
                 <div class="pc-section">
-                    <p><strong th:text="#{ram_name}">RAM:</strong></p>
+                    <p><strong th:text="#{ram}">RAM:</strong></p>
                     <p th:text="#{ram_name}">Name: <span th:text="${pc.ramEntity.name}"></span></p>
                     <p th:text="#{ram_speed}">Speed: <span th:text="${pc.ramEntity.type}"></span></p>
                     <p th:text="#{ram_size}">Size: <span th:text="${pc.ramEntity.size.getSize()}"></span> GB</p>

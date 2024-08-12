@@ -60,10 +60,10 @@ public class PCController {
 
         PC pc = new PC();
         pc.setName(pcDTO.getName());
-        pc.setCpu(cpuServiceImpl.getPartById(pcDTO.getCpuId()));
-        pc.setGpu(gpuServiceImpl.getPartById(pcDTO.getGpuId()));
-        pc.setMemory(memoryServiceImpl.getPartById(pcDTO.getMemoryId()));
-        pc.setRam(ramServiceImpl.getPartById(pcDTO.getRamId()));
+        pc.setCpuEntity(cpuServiceImpl.getPartById(pcDTO.getCpuId()));
+        pc.setGpuEntity(gpuServiceImpl.getPartById(pcDTO.getGpuId()));
+        pc.setMemoryEntity(memoryServiceImpl.getPartById(pcDTO.getMemoryId()));
+        pc.setRamEntity(ramServiceImpl.getPartById(pcDTO.getRamId()));
         pc.setPcType(pcDTO.getPcType());
         pc.setPrice(pcDTO.getPrice());
 

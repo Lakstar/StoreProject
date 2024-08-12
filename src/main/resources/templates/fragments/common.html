@@ -25,10 +25,6 @@
                     <a th:href="@{/shop}" th:text="#{nav_bar_shop}">Shop</a>
                 </li>
 
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/cart}" th:text="#{nav_bar_cart}">Cart</a>
-                </li>
-
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                     <a class="dropdown-toggle" href="#" id="adminDropdown" role="button" th:text="#{nav_bar_admin}">Admin</a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">

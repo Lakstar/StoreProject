@@ -13,16 +13,16 @@ public class PC {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private CpuEntity cpuEntity;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private GpuEntity gpuEntity;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private MemoryEntity memoryEntity;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private RamEntity ramEntity;
 
     @Column(nullable = false)
@@ -48,35 +48,35 @@ public class PC {
         this.name = name;
     }
 
-    public CpuEntity getCpu() {
+    public CpuEntity getCpuEntity() {
         return cpuEntity;
     }
 
-    public void setCpu(CpuEntity cpuEntity) {
+    public void setCpuEntity(CpuEntity cpuEntity) {
         this.cpuEntity = cpuEntity;
     }
 
-    public GpuEntity getGpu() {
+    public GpuEntity getGpuEntity() {
         return gpuEntity;
     }
 
-    public void setGpu(GpuEntity gpuEntity) {
+    public void setGpuEntity(GpuEntity gpuEntity) {
         this.gpuEntity = gpuEntity;
     }
 
-    public MemoryEntity getMemory() {
+    public MemoryEntity getMemoryEntity() {
         return memoryEntity;
     }
 
-    public void setMemory(MemoryEntity memoryEntity) {
+    public void setMemoryEntity(MemoryEntity memoryEntity) {
         this.memoryEntity = memoryEntity;
     }
 
-    public RamEntity getRam() {
+    public RamEntity getRamEntity() {
         return ramEntity;
     }
 
-    public void setRam(RamEntity ramEntity) {
+    public void setRamEntity(RamEntity ramEntity) {
         this.ramEntity = ramEntity;
     }
 
