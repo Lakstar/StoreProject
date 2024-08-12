@@ -30,5 +30,9 @@ public class HomeController {
     public String add(Model model) {
         return "add-main";
     }
+    @GetMapping("/add/add-monitor")
+    public String addMonitor(Model model) {
+        return "add-monitor";
+    }
 
 }
