@@ -8,11 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import project.project.model.dto.OrderInfoDTO;
 import project.project.model.dto.RegisterDTO;
-import project.project.model.dto.UserInfoDTO;
 import project.project.model.entity.PC;
 import project.project.model.entity.UserEntity;
 import project.project.model.entity.UserRoleEntity;
@@ -24,7 +20,6 @@ import project.project.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {

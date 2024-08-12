@@ -7,6 +7,9 @@ import project.project.model.entity.RamEntity;
 import project.project.repository.RAMRepository;
 import project.project.service.RamService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class RamServiceImpl implements RamService {
     private final RAMRepository ramRepository;
@@ -33,6 +36,16 @@ public class RamServiceImpl implements RamService {
     public RamEntity getPartById(long id) {
         return ramRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("RamEntity not found with id: " + id));
+    }
+
+    @Override
+    public List<RamEntity> getAllRams() {
+        return ramRepository.findAll();
+    }
+
+    @Override
+    public void deleteRam(long id) {
+        ramRepository.deleteById(id);
     }
 
 }

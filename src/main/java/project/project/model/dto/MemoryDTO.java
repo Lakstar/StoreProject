@@ -14,6 +14,15 @@ public class MemoryDTO {
     @NotNull(message = "Size is required")
     private Integer size;
 
+    public MemoryDTO() {
+    }
+
+    public MemoryDTO(String name, MemoryType type, Integer size) {
+        this.name = name;
+        this.type = type;
+        this.size = size;
+    }
+
     public String getName() {
         return name;
     }

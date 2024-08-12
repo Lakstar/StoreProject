@@ -32,7 +32,7 @@
                 <li sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown">
                     <a class="dropdown-toggle" href="#" id="adminDropdown" role="button" th:text="#{nav_bar_admin}">Admin</a>
                     <div class="dropdown-menu" aria-labelledby="adminDropdown">
-                        <a class="dropdown-item" th:href="@{/viewOrders}" th:text="#{nav_bar_order_review}">Order Review</a>
+                        <a class="dropdown-item" th:href="@{/view/monitors}" th:text="#{nav_bar_order_review}">View Out-of-Stock Products</a>
                         <a class="dropdown-item" th:href="@{/add}" th:text="#{nav_bar_add_products}">Add Products and Parts</a>
                         <a class="dropdown-item" th:href="@{/view/parts}" th:text="#{nav_bar_view_parts}">View Parts</a>
                     </div>

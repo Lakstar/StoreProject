@@ -7,6 +7,9 @@ import project.project.model.entity.GpuEntity;
 import project.project.repository.GPURepository;
 import project.project.service.GpuService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class GpuServiceImpl implements GpuService {
     private final GPURepository gpuRepository;
@@ -32,5 +35,15 @@ public class GpuServiceImpl implements GpuService {
     public GpuEntity getPartById(long id) {
         return gpuRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("GpuEntity not found with id: " + id));
+    }
+
+    @Override
+    public List<GpuEntity> getAllGpus() {
+        return gpuRepository.findAll();
+    }
+
+    @Override
+    public void deleteGpu(long id) {
+        gpuRepository.deleteById(id);
     }
 }

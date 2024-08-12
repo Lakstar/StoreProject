@@ -7,6 +7,9 @@ import project.project.model.entity.MemoryEntity;
 import project.project.repository.MemoryRepository;
 import project.project.service.MemoryService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MemoryServiceImpl implements MemoryService {
     private final MemoryRepository memoryRepository;
@@ -33,5 +36,15 @@ public class MemoryServiceImpl implements MemoryService {
     public MemoryEntity getPartById(long id) {
         return memoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("MemoryEntity not found with id: " + id));
+    }
+
+    @Override
+    public List<MemoryEntity> getAllMemories() {
+        return memoryRepository.findAll();
+    }
+
+    @Override
+    public void deleteMemory(long id) {
+        memoryRepository.deleteById(id);
     }
 }

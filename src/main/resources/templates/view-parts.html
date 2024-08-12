@@ -4,6 +4,78 @@
 
 <body>
 <header th:replace="~{fragments/common :: nav}"></header>
+<main>
+    <div class="container">
+        <h1 th:text="#{parts_title}">Parts Overview</h1>
 
+        <div class="category-box-container">
+            <div class="category-box">
+                <h2 th:text="#{cpu_title}">CPUs</h2>
+                <div class="category-content">
+                    <div th:each="cpu : ${cpus}" class="part-card">
+                        <div class="part-info">
+                            <p><strong>CPU:</strong> <span th:text="${cpu.name}"></span></p>
+                            <p><strong>CPU Type:</strong> <span th:text="${cpu.cpuType}"></span></p>
+                        </div>
+                        <form th:action="@{'/delete/cpu/' + ${cpu.id}}" method="post">
+                            <input type="hidden" name="id" th:value="${cpu.id}" />
+                            <button type="submit" class="delete-button" th:text="#{delete_button}">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h2 th:text="#{gpu_title}">GPUs</h2>
+                <div class="category-content">
+                    <div th:each="gpu : ${gpus}" class="part-card">
+                        <div class="part-info">
+                            <p><strong>GPU:</strong> <span th:text="${gpu.name}"></span></p>
+                            <p><strong>GPU VRAM:</strong> <span th:text="${gpu.gpuRam}"></span> GB</p>
+                        </div>
+                        <form th:action="@{'/delete/gpu/' + ${gpu.id}}" method="post">
+                            <input type="hidden" name="id" th:value="${gpu.id}" />
+                            <button type="submit" class="delete-button" th:text="#{delete_button}">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h2 th:text="#{memory_title}">Memories</h2>
+                <div class="category-content">
+                    <div th:each="memory : ${memories}" class="part-card">
+                        <div class="part-info">
+                            <p><strong>Memory:</strong> <span th:text="${memory.name}"></span></p>
+                            <p><strong>Memory Type:</strong> <span th:text="${memory.memoryType}"></span></p>
+                            <p><strong>Memory Size:</strong> <span th:text="${memory.size}"></span> GB</p>
+                        </div>
+                        <form th:action="@{'/delete/memory/' + ${memory.id}}" method="post">
+                            <input type="hidden" name="id" th:value="${memory.id}" />
+                            <button type="submit" class="delete-button" th:text="#{delete_button}">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h2 th:text="#{ram_title}">RAMs</h2>
+                <div class="category-content">
+                    <div th:each="ram : ${rams}" class="part-card">
+                        <div class="part-info">
+                            <p><strong>RAM:</strong> <span th:text="${ram.name}"></span></p>
+                            <p><strong>RAM Size:</strong> <span th:text="${ram.size.getSize()}"></span> GB</p>
+                            <p><strong>RAM Speed:</strong> <span th:text="${ram.type}"></span></p>
+                        </div>
+                        <form th:action="@{'/delete/ram/' + ${ram.id}}" method="post">
+                            <input type="hidden" name="id" th:value="${ram.id}" />
+                            <button type="submit" class="delete-button" th:text="#{delete_button}">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

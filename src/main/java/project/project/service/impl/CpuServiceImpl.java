@@ -7,6 +7,9 @@ import project.project.model.entity.CpuEntity;
 import project.project.repository.CPURepository;
 import project.project.service.CpuService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CpuServiceImpl implements CpuService {
     private final CPURepository cpuRepository;
@@ -33,5 +36,15 @@ public class CpuServiceImpl implements CpuService {
     public CpuEntity getPartById(long id) {
         return cpuRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("CpuEntity not found with id: " + id));
+    }
+
+    @Override
+    public List<CpuEntity> getAllCpus() {
+        return cpuRepository.findAll();
+    }
+
+    @Override
+    public void deleteCpu(long id) {
+        cpuRepository.deleteById(id);
     }
 }

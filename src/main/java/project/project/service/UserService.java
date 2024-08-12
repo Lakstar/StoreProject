@@ -1,8 +1,6 @@
 package project.project.service;
 
-import project.project.model.dto.OrderInfoDTO;
 import project.project.model.dto.RegisterDTO;
-import project.project.model.dto.UserInfoDTO;
 import project.project.model.entity.PC;
 import project.project.model.entity.UserEntity;
 

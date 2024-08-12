@@ -11,6 +11,14 @@ public class GpuDTO {
     @Min(value = 1, message = "RamEntity must be at least 1 GB")
     private int gpuRam;
 
+    public GpuDTO() {
+    }
+
+    public GpuDTO(String name, int gpuRam) {
+        this.name = name;
+        this.gpuRam = gpuRam;
+    }
+
     public String getName() {
         return name;
     }

@@ -4,9 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.project.model.dto.*;
 import project.project.model.enums.CPUType;
@@ -19,13 +17,13 @@ import project.project.service.impl.MemoryServiceImpl;
 import project.project.service.impl.RamServiceImpl;
 
 @Controller
-public class AddPartsController {
+public class PartsController {
     private final RamServiceImpl ramServiceImpl;
     private final CpuServiceImpl cpuServiceImpl;
     private final MemoryServiceImpl memoryServiceImpl;
     private final GpuServiceImpl gpuServiceImpl;
 
-    public AddPartsController(RamServiceImpl ramServiceImpl, CpuServiceImpl cpuServiceImpl, MemoryServiceImpl memoryServiceImpl, GpuServiceImpl gpuServiceImpl) {
+    public PartsController(RamServiceImpl ramServiceImpl, CpuServiceImpl cpuServiceImpl, MemoryServiceImpl memoryServiceImpl, GpuServiceImpl gpuServiceImpl) {
         this.ramServiceImpl = ramServiceImpl;
         this.cpuServiceImpl = cpuServiceImpl;
         this.memoryServiceImpl = memoryServiceImpl;
@@ -133,4 +131,36 @@ public class AddPartsController {
     }
 
 
+    @GetMapping("/view/parts")
+    public String viewParts(Model model) {
+        model.addAttribute("cpus", cpuServiceImpl.getAllCpus());
+        model.addAttribute("gpus", gpuServiceImpl.getAllGpus());
+        model.addAttribute("memories", memoryServiceImpl.getAllMemories());
+        model.addAttribute("rams", ramServiceImpl.getAllRams());
+        return "view-parts";
+    }
+
+    @PostMapping("/delete/cpu/{id}")
+    public String deleteCpu(@PathVariable("id") long id) {
+        cpuServiceImpl.deleteCpu(id);
+        return "redirect:/view/parts";
+    }
+
+    @PostMapping("/delete/gpu/{id}")
+    public String deleteGpu(@PathVariable("id") long id) {
+        gpuServiceImpl.deleteGpu(id);
+        return "redirect:/view/parts";
+    }
+
+    @PostMapping("/delete/memory/{id}")
+    public String deleteMemory(@PathVariable("id") long id) {
+        memoryServiceImpl.deleteMemory(id);
+        return "redirect:/view/parts";
+    }
+
+    @PostMapping("/delete/ram/{id}")
+    public String deleteRam(@PathVariable("id") long id) {
+        ramServiceImpl.deleteRam(id);
+        return "redirect:/view/parts";
+    }
 }

@@ -13,6 +13,14 @@ public class CpuDTO {
     @NotNull
     private CPUType cpuType;
 
+    public CpuDTO() {
+    }
+
+    public CpuDTO(String name, CPUType cpuType) {
+        this.name = name;
+        this.cpuType = cpuType;
+    }
+
     public String getName() {
         return name;
     }
