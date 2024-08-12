@@ -15,6 +15,15 @@
             <a th:href="@{/cart}" th:text="#{shopping_message}">Everything can be found here! Enjoy your shopping!</a>
         </div>
     </div>
+    <form th:method="get">
+        <label class="border" for="lang" th:text="#{nav_bar_language}">Language</label>
+        <select id="lang" name="lang" onchange="this.form.submit()">
+            <option value="en_US"
+                    th:selected="${#locale.toString()} == 'en_US'">English</option>
+            <option value="bg_BG"
+                    th:selected="${#locale.toString()} == 'bg_BG'">Български</option>
+        </select>
+    </form>
 </main>
 
 <footer th:replace="~{fragments/common :: footer}"></footer>

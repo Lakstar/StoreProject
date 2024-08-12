@@ -57,4 +57,21 @@ public class UserController {
             model.addAttribute("orders", orders);
             return "user";
     }
+
+    @PostMapping("/user/updateUsername")
+    public String updateUsername(@RequestParam("userId") Long userId,
+                                 @RequestParam("newUsername") String newUsername,
+                                 Model model) {
+        try {
+            userServiceImpl.updateUsername(userId, newUsername);
+            return "redirect:/user?userId=" + userId;
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("updateError", e.getMessage());
+            UserEntity user = userServiceImpl.getUserById(userId);
+            List<PC> orders = userServiceImpl.getOrdersByUserId(userId);
+            model.addAttribute("user", user);
+            model.addAttribute("orders", orders);
+            return "user";
+        }
+    }
 }

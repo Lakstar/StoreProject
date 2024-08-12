@@ -114,4 +114,17 @@ public class UserServiceImpl implements UserService {
         }
         throw new IllegalStateException("No user is currently authenticated");
     }
+
+    @Transactional
+    public void updateUsername(Long userId, String newUsername) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + userId));
+
+        if (userRepository.existsByUsername(newUsername)) {
+            throw new IllegalArgumentException("Username is already taken");
+        }
+
+        user.setUsername(newUsername);
+        userRepository.save(user);
+    }
 }
