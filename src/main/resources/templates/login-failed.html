@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/common :: head}"></head>
+<body>
+<header th:replace="~{fragments/common :: nav}"></header>
+
+<main class="login-container">
+    <div class="error-box">
+        <h2 class="h2 mb-2" th:text="#{login_failed_title}">Login Failed</h2>
+        <p class="mb-4" th:text="#{login_failed_message}">Incorrect login information. Please try again.</p>
+        <div class="button-holder d-flex justify-content-center">
+            <a th:href="/login" class="btn btn-primary" th:text="#{back_to_login_button}">Back to Login</a>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/common :: footer}"></footer>
+</body>
+</html>

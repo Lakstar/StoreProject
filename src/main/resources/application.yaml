@@ -31,6 +31,12 @@ logging:
 server:
   port: 8080
 
+exchange:
+  api:
+    url: "https://openexchangerates.org/api/latest.json?app_id={app_id}"
+    key: ${EXCHANGE_RATES_ID:}
+    base: "USD"
+
 monitors:
   api:
     baseUrl: "http://localhost:8081"

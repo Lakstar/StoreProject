@@ -1,6 +1,7 @@
 package project.project.controller;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,7 @@ import project.project.service.impl.*;
 import java.security.Principal;
 
 @Controller
+@RequiredArgsConstructor
 public class PCController {
 
     private final GpuServiceImpl gpuServiceImpl;
@@ -29,16 +31,6 @@ public class PCController {
     private final MemoryServiceImpl memoryServiceImpl;
     private final PcServiceImpl pcServiceImpl;
     private final UserServiceImpl userServiceImpl;
-
-
-    public PCController(CPURepository cpuRepository, GPURepository gpuRepository, MemoryRepository memoryRepository, RAMRepository ramRepository, GpuServiceImpl gpuServiceImpl, CpuServiceImpl cpuServiceImpl, RamServiceImpl ramServiceImpl, MemoryServiceImpl memoryServiceImpl, PcServiceImpl pcServiceImpl, UserServiceImpl userServiceImpl) {
-        this.gpuServiceImpl = gpuServiceImpl;
-        this.cpuServiceImpl = cpuServiceImpl;
-        this.ramServiceImpl = ramServiceImpl;
-        this.memoryServiceImpl = memoryServiceImpl;
-        this.pcServiceImpl = pcServiceImpl;
-        this.userServiceImpl = userServiceImpl;
-    }
 
     @GetMapping("/add/add-pc")
     public String showAddPcForm(Model model) {

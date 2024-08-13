@@ -12,7 +12,7 @@ import java.security.Principal;
 public class HomeController {
 
     @GetMapping("/")
-    public String index(Model model, Principal principal) {
+    public String showIndex(Model model, Principal principal) {
         if (principal != null) {
             model.addAttribute("welcomeMessage", "Welcome " + principal.getName() +"!");
         } else {
@@ -28,7 +28,12 @@ public class HomeController {
     }
 
     @GetMapping("/add")
-    public String add(Model model) {
+    public String showAdd(Model model) {
         return "add-main";
+    }
+
+    @GetMapping("/login/failed")
+    public String showLoginFailed(Model model){
+        return "login-failed";
     }
 }
