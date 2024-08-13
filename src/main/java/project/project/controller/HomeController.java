@@ -36,4 +36,9 @@ public class HomeController {
     public String showLoginFailed(Model model){
         return "login-failed";
     }
+
+    @GetMapping("/error")
+    public String handleError() {
+        return "error";
+    }
 }

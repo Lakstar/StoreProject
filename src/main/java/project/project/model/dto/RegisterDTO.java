@@ -9,12 +9,10 @@ import project.project.validation.anotations.UniqueUsername;
 public class RegisterDTO {
     @NotBlank(message = "Username is empty")
     @Size(min = 3, max = 20, message = "Username must be between 3 and 20 symbols long")
-    @UniqueUsername
     private String username;
 
     @NotBlank
     @Email(regexp = ".*@.*")
-    @UniqueEmail
     private String email;
 
     @NotBlank

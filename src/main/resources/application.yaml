@@ -11,7 +11,7 @@ spring:
       ddl-auto: update
     open-in-view: 'false'
   mvc:
-    hiddenmethod:
+    hidden-method:
       filter:
         enabled: 'true'
   datasource:
@@ -29,13 +29,11 @@ logging:
       nodeValue: WARN
     blog: WARN
 server:
+  error:
+    whitelabel:
+      enabled: false
+    path: "/error"
   port: 8080
-
-exchange:
-  api:
-    url: "https://openexchangerates.org/api/latest.json?app_id={app_id}"
-    key: ${EXCHANGE_RATES_ID:}
-    base: "USD"
 
 monitors:
   api:

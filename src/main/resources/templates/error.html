@@ -6,10 +6,9 @@
 
 <main class="login-container">
     <div class="error-box">
-        <h2 class="h2 mb-2" th:text="#{login_failed_title}">Login Failed</h2>
-        <p class="mb-4" th:text="#{login_failed_message}">Incorrect login information. Please try again.</p>
+        <h2 class="h2 mb-2" th:text="#{error_encountered}">Error encountered, we are working on it</h2>
         <div class="button-holder d-flex justify-content-center">
-            <a th:href="@{/login}" class="btn btn-primary" th:text="#{back_to_login_button}">Back to Login</a>
+            <a th:href="@{/}" class="btn btn-primary" th:text="#{back_to_home_button}">Back to Home</a>
         </div>
     </div>
 </main>

@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                                .requestMatchers("/", "/login", "/register","/error").permitAll()
+                                .requestMatchers("/", "/login", "/register","/error","/login/failed").permitAll()
                                 .requestMatchers("/add/**").hasRole("ADMIN")
                                 .requestMatchers("/view/**").hasRole("ADMIN")
                                 .requestMatchers("/delete/**").hasRole("ADMIN")
