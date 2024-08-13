@@ -38,17 +38,17 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void register(RegisterDTO registerDTO) {
+    public boolean register(RegisterDTO registerDTO) {
         if (userRepository.existsByUsername(registerDTO.getUsername())) {
-            throw new IllegalArgumentException("Username is already taken");
+            return false;
         }
 
         if (userRepository.existsByEmail(registerDTO.getEmail())) {
-            throw new IllegalArgumentException("Email is already in use");
+            return false;
         }
 
         if (!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) {
-            throw new IllegalArgumentException("Passwords do not match");
+            return false;
 
         }
 
@@ -60,11 +60,12 @@ public class UserServiceImpl implements UserService {
         UserRoleEntity userRole = userRoleRepository.findByUserRole(UserRoles.USER);
 
         if (userRole == null) {
-            throw new IllegalArgumentException("User role not found");
+            return false;
         }
 
         userEntity.getRole().add(userRole);
         userRepository.save(userEntity);
+        return true;
     }
 
     @Override

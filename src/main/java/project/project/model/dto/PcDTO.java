@@ -4,8 +4,8 @@ import jakarta.validation.constraints.*;
 import project.project.model.enums.PCType;
 
 public class PcDTO {
-    @NotEmpty
-    @Size(min = 3, max = 30)
+    @NotEmpty(message = "Name is required")
+    @Size(min = 3, max = 60, message = "Must be between 3 and 60 symbols")
     private String name;
     @NotNull
     private Long cpuId;
@@ -17,9 +17,9 @@ public class PcDTO {
     private Long ramId;
     @NotNull
     private PCType pcType;
-    @NotNull
-    @Min(value = 1)
-    @Max(value = 10000)
+    @NotNull(message = "Price is required")
+    @Min(value = 400, message = "Cannot be below 400")
+    @Max(value = 10000, message = "Cannot be above 10000")
     private double price;
 
     public String getName() {

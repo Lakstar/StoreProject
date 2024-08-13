@@ -7,8 +7,8 @@ import project.project.model.enums.CPUType;
 
 public class CpuDTO {
 
-    @NotEmpty
-    @Size(min=3, max=40)
+    @NotEmpty(message = "Cannot be empty")
+    @Size(min=3, max=60, message = "Name must be between 3 and 60")
     private String name;
     @NotNull
     private CPUType cpuType;

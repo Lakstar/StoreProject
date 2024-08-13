@@ -1,12 +1,15 @@
 package project.project.model.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import project.project.model.enums.RamSizes;
 import project.project.model.enums.RamType;
 
 public class RamDTO {
-    @Size(min = 1, max = 40)
+    @NotEmpty(message = "Name is required")
+    @Size(min = 4, max = 60, message = "Name must be between 4 and 60 symbols long")
     private String name;
 
     @NotNull(message = "Size is required")

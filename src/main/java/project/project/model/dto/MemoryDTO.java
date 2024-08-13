@@ -1,11 +1,13 @@
 package project.project.model.dto;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import project.project.model.enums.MemoryType;
 
 public class MemoryDTO {
-    @Size(min = 1, max = 40)
+    @NotEmpty(message = "Name is required")
+    @Size(min = 3, max = 60, message = "Must be between 3 and 60 symbols")
     private String name;
 
     @NotNull(message = "Type is required")

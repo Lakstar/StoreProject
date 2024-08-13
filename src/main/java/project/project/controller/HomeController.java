@@ -14,9 +14,9 @@ public class HomeController {
     @GetMapping("/")
     public String index(Model model, Principal principal) {
         if (principal != null) {
-            model.addAttribute("welcomeMessage", "Welcome " + principal.getName());
+            model.addAttribute("welcomeMessage", "Welcome " + principal.getName() +"!");
         } else {
-            model.addAttribute("welcomeMessage", "Welcome anonymous");
+            model.addAttribute("welcomeMessage", "Welcome anonymous!");
         }
         return "index";
     }

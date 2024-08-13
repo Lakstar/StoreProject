@@ -1,6 +1,7 @@
 package project.project.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 import java.util.ArrayList;
 import java.util.List;

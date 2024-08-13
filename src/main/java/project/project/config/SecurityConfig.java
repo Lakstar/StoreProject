@@ -38,7 +38,7 @@ public class SecurityConfig {
                                 .usernameParameter("username")
                                 .passwordParameter("password")
                                 .successHandler(customAuthenticationSuccessHandler)
-                                .failureForwardUrl("/login")
+                                .failureUrl("/")
                 )
                 .logout(logout ->
                         logout

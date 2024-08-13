@@ -14,4 +14,13 @@ public enum RamSizes {
     public int getSize() {
         return size;
     }
+
+    @Override
+    public String toString() {
+        return switch (this) {
+            case FOUR_GB -> "4 GB";
+            case EIGHT_GB -> "8 GB";
+            case SIXTEEN_GB -> "16 GB";
+        };
+    }
 }

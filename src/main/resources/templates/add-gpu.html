@@ -9,14 +9,16 @@
     <div class="add-box">
         <h2 th:text="#{add_gpu_title}">Add a GPU to the shop:</h2>
         <div class="form-container">
-            <form th:action="@{/add/add-gpuEntity}" method="post" th:object="${gpuData}">
+            <form th:action="@{/add/add-gpu}" method="post" th:object="${gpuData}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2" th:text="#{gpu_name_label}">GPU Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
+                    <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
                 </div>
                 <div class="form-group">
                     <label for="gpuRam" class="h3 mb-2" th:text="#{gpu_ram_label}">GPU RAM (GB)</label>
                     <input type="number" class="form-control" id="gpuRam" name="gpuRam" th:field="*{gpuRam}" min="1" required/>
+                    <small th:if="${#fields.hasErrors('gpuRam')}" th:errors="*{gpuRam}" class="text-danger"></small>
                 </div>
                 <div class="button-holder d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary" th:text="#{add_gpu_button}">Add GPU</button>

@@ -13,16 +13,22 @@
             <form th:action="@{/add/add-monitor}" method="post" th:object="${monitorData}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2" th:text="#{monitor_name_label}">Monitor Name</label>
-                    <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required />
+                    <input type="text" class="form-control" id="name" th:field="*{name}" required/>
+                    <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
                 </div>
+
                 <div class="form-group">
                     <label for="inches" class="h3 mb-2" th:text="#{monitor_inches_label}">Monitor Size (Inches)</label>
-                    <input type="number" class="form-control" id="inches" name="inches" th:field="*{inches}" min="1" required />
+                    <input type="number" class="form-control" id="inches" th:field="*{inches}" min="1" required/>
+                    <small th:if="${#fields.hasErrors('inches')}" th:errors="*{inches}" class="text-danger"></small>
                 </div>
+
                 <div class="form-group">
                     <label for="description" class="h3 mb-2" th:text="#{monitor_description_label}">Description</label>
-                    <textarea class="form-control" id="description" name="description" th:field="*{description}" rows="3"></textarea>
+                    <textarea class="form-control" id="description" th:field="*{description}" rows="3" required></textarea>
+                    <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></small>
                 </div>
+
                 <div class="button-holder d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary" th:text="#{add_monitor_button}">Add Monitor</button>
                 </div>
@@ -30,7 +36,6 @@
         </div>
     </div>
 </main>
-
 <footer th:replace="~{fragments/common :: footer}"></footer>
 </body>
 

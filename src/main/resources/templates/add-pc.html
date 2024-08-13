@@ -9,16 +9,11 @@
     <div class="add-box">
         <h2 th:text="#{add_pc_title}">Add a PC to the shop:</h2>
         <div class="form-container">
-            <div th:if="${errors != null}">
-                <div th:each="error : ${errors}" class="alert alert-danger">
-                    <span th:text="${error.defaultMessage}"></span>
-                </div>
-            </div>
-
             <form th:action="@{/add/add-pc}" method="post" th:object="${pc}">
                 <div class="form-group">
                     <label for="name" class="h3 mb-2" th:text="#{pc_name_label}">PC Name</label>
                     <input type="text" class="form-control" id="name" name="name" th:field="*{name}" required/>
+                    <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></small>
                 </div>
 
                 <div class="form-group">
@@ -29,6 +24,7 @@
                                 th:value="${cpuEntity.id}"
                                 th:text="${cpuEntity.name}"></option>
                     </select>
+                    <small th:if="${#fields.hasErrors('cpuId')}" th:errors="*{cpuId}" class="text-danger"></small>
                 </div>
 
                 <div class="form-group">
@@ -39,6 +35,7 @@
                                 th:value="${gpuEntity.id}"
                                 th:text="${gpuEntity.name}"></option>
                     </select>
+                    <small th:if="${#fields.hasErrors('gpuId')}" th:errors="*{gpuId}" class="text-danger"></small>
                 </div>
 
                 <div class="form-group">
@@ -49,6 +46,7 @@
                                 th:value="${memoryEntity.id}"
                                 th:text="${memoryEntity.name}"></option>
                     </select>
+                    <small th:if="${#fields.hasErrors('memoryId')}" th:errors="*{memoryId}" class="text-danger"></small>
                 </div>
 
                 <div class="form-group">
@@ -59,6 +57,7 @@
                                 th:value="${ramEntity.id}"
                                 th:text="${ramEntity.name}"></option>
                     </select>
+                    <small th:if="${#fields.hasErrors('ramId')}" th:errors="*{ramId}" class="text-danger"></small>
                 </div>
 
                 <div class="form-group">
@@ -69,11 +68,13 @@
                                 th:value="${type.name()}"
                                 th:text="${type.name()}"></option>
                     </select>
+                    <small th:if="${#fields.hasErrors('pcType')}" th:errors="*{pcType}" class="text-danger"></small>
                 </div>
 
                 <div class="form-group">
                     <label for="price" class="h3 mb-2" th:text="#{price_label}">Price</label>
                     <input type="number" class="form-control" id="price" name="price" th:field="*{price}" step="0.01" required/>
+                    <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></small>
                 </div>
 
                 <div class="button-holder">

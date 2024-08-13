@@ -7,7 +7,7 @@ import project.project.model.entity.UserEntity;
 import java.util.List;
 
 public interface UserService {
-    public void register(RegisterDTO registerDTO);
+    public boolean register(RegisterDTO registerDTO);
     public boolean addPCToUserOrders(Long userId, Long pcId);
     public UserEntity getUserById(Long userId);
     public List<PC> getOrdersByUserId(Long userId);

@@ -33,14 +33,18 @@ public class PartsController {
 
     @GetMapping("/add/add-ram")
     public String showAddRamForm(Model model) {
-        model.addAttribute("ramData", new RamDTO());
+        if(!model.containsAttribute("ramData")) {
+            model.addAttribute("ramData", new RamDTO());
+        }
         model.addAttribute("ramSizes", RamSizes.values());
         model.addAttribute("ramTypes", RamType.values());
         return "add-ram";
     }
     @GetMapping("/add/add-cpu")
     public String showAddCpuForm(Model model) {
-        model.addAttribute("cpuData", new CpuDTO());
+        if(!model.containsAttribute("cpuData")) {
+            model.addAttribute("cpuData", new CpuDTO());
+        }
         model.addAttribute("cpuTypes", CPUType.values());
         return "add-cpu";
     }
@@ -53,7 +57,9 @@ public class PartsController {
     }
     @GetMapping("/add/add-memory")
     public String showAddMemoryForm(Model model) {
-        model.addAttribute("memoryData", new MemoryDTO());
+        if(!model.containsAttribute("memoryData")) {
+            model.addAttribute("memoryData", new MemoryDTO());
+        }
         model.addAttribute("memoryTypes", MemoryType.values());
         return "add-memory";
     }
