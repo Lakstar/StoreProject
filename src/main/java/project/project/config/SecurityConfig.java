@@ -40,12 +40,12 @@ public class SecurityConfig {
                                 .successHandler(customAuthenticationSuccessHandler)
                                 .failureUrl("/")
                 )
-                .logout(logout ->
-                        logout
+                .logout(logout -> logout
                                 .logoutUrl("/logout")
                                 .logoutSuccessUrl("/")
                                 .invalidateHttpSession(true)
                 )
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/logout"))
                 .build();
     }
 

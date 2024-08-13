@@ -18,11 +18,9 @@ import java.util.List;
 public class MonitorServiceImpl implements MonitorService {
 
     private final RestClient monitorRestClient;
-    private final String baseUrl;
 
-    public MonitorServiceImpl(@Qualifier("monitorsRestClient") RestClient monitorRestClient, MonitorApiConfig monitorApiConfig) {
+    public MonitorServiceImpl(@Qualifier("monitorsRestClient") RestClient monitorRestClient) {
         this.monitorRestClient = monitorRestClient;
-        this.baseUrl = monitorApiConfig.getBaseUrl();
     }
 
     @Override

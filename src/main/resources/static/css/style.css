@@ -26,7 +26,25 @@ nav .links ul li {
     text-align: center;
 }
 
-nav .links ul li a {
+nav .links ul li form,
+nav .links ul li button{
+    width: 100%;
+}
+
+nav .links ul li button{
+    display: block;
+    padding: 6px 0;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+nav .links ul li a{
     display: block;
     padding: 10px 0;
     text-decoration: none;
@@ -35,10 +53,13 @@ nav .links ul li a {
     border-radius: 5px;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
 nav .links ul li a:hover,
-nav .links ul li a.active {
+nav .links ul li a.active,
+nav .links ul li button:hover {
     background-color: #0056b3;
 }
 

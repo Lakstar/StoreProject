@@ -2,16 +2,19 @@ package project.project.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import project.project.validation.anotations.UniqueEmail;
+import project.project.validation.anotations.UniqueUsername;
 
 public class RegisterDTO {
     @NotBlank(message = "Username is empty")
     @Size(min = 3, max = 20, message = "Username must be between 3 and 20 symbols long")
+    @UniqueUsername
     private String username;
 
     @NotBlank
-    @Email
+    @Email(regexp = ".*@.*")
+    @UniqueEmail
     private String email;
 
     @NotBlank

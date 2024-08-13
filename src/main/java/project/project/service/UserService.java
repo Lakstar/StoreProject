@@ -13,4 +13,8 @@ public interface UserService {
     public List<PC> getOrdersByUserId(Long userId);
 
     public UserEntity getUserByUsername(String username);
+
+    boolean isUsernameUnique(String username);
+
+    boolean isEmailUnique(String email);
 }

@@ -42,14 +42,11 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsByUsername(registerDTO.getUsername())) {
             return false;
         }
-
         if (userRepository.existsByEmail(registerDTO.getEmail())) {
             return false;
         }
-
         if (!registerDTO.getPassword().equals(registerDTO.getConfirmPassword())) {
             return false;
-
         }
 
         UserEntity userEntity = new UserEntity();
@@ -104,16 +101,14 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 
-    public Long getCurrentUserId() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            String username = userDetails.getUsername();
-            UserEntity user = userRepository.findByUsername(username)
-                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-            return user.getId();
-        }
-        throw new IllegalStateException("No user is currently authenticated");
+    @Override
+    public boolean isUsernameUnique(String username) {
+        return !userRepository.existsByUsername(username);
+    }
+
+    @Override
+    public boolean isEmailUnique(String email) {
+        return !userRepository.existsByEmail(email);
     }
 
     @Transactional
