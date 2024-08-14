@@ -1,21 +1,27 @@
 package project.project.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import project.project.model.dto.CreateMonitorDTO;
 import project.project.model.dto.MonitorDTO;
+import project.project.service.MonitorService;
 import project.project.service.impl.MonitorServiceImpl;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/monitors")
-@RequiredArgsConstructor
 public class RestMonitorController {
 
-    private final MonitorServiceImpl monitorService;
+    private final MonitorService monitorService;
+
+    @Autowired
+    public RestMonitorController(MonitorService monitorService) {
+        this.monitorService = monitorService;
+    }
 
     @PostMapping
     public ResponseEntity<Void> addMonitor(@RequestBody CreateMonitorDTO createMonitorDTO) {

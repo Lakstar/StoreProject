@@ -3,8 +3,6 @@ package project.project.model.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import project.project.validation.anotations.UniqueEmail;
-import project.project.validation.anotations.UniqueUsername;
 
 public class RegisterDTO {
     @NotBlank(message = "Username is empty")

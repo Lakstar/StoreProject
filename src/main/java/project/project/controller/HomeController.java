@@ -21,12 +21,6 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/debug-session")
-    public String debugSession(HttpSession session, Model model) {
-        model.addAttribute("sessionUserId", session.getAttribute("userId"));
-        return "debug-session";
-    }
-
     @GetMapping("/add")
     public String showAdd(Model model) {
         return "add-main";

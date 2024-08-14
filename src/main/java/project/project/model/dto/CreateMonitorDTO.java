@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
+import lombok.RequiredArgsConstructor;
 
 public class CreateMonitorDTO {
     @NotEmpty(message = "Name is required")
@@ -17,6 +18,15 @@ public class CreateMonitorDTO {
     @NotEmpty(message = "Description is required")
     @Size(min = 5,max = 100, message = "Between 5 and 100 symbols")
     private String description;
+
+    public CreateMonitorDTO(String name, int inches, String description) {
+        this.name = name;
+        this.inches = inches;
+        this.description = description;
+    }
+
+    public CreateMonitorDTO() {
+    }
 
     public String getName() {
         return name;

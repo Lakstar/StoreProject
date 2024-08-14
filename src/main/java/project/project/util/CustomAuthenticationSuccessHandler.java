@@ -27,10 +27,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         UserEntity user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Store userId in session
         request.getSession().setAttribute("userId", user.getId());
         System.out.println("User ID set in session: " + user.getId());
-
         response.sendRedirect("/");
     }
 }

@@ -1,6 +1,7 @@
 package project.project.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import project.project.model.dto.RegisterDTO;
 import project.project.model.entity.PC;
 import project.project.model.entity.UserEntity;
+import project.project.service.UserService;
 import project.project.service.impl.UserServiceImpl;
 
 import java.util.List;
@@ -16,8 +18,9 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    private final UserServiceImpl userServiceImpl;
+    private final UserService userServiceImpl;
 
+    @Autowired
     public UserController(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }

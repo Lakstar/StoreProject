@@ -2,6 +2,7 @@ package project.project.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,20 +18,30 @@ import project.project.repository.CPURepository;
 import project.project.repository.GPURepository;
 import project.project.repository.MemoryRepository;
 import project.project.repository.RAMRepository;
+import project.project.service.*;
 import project.project.service.impl.*;
 
 import java.security.Principal;
 
 @Controller
-@RequiredArgsConstructor
 public class PCController {
 
-    private final GpuServiceImpl gpuServiceImpl;
-    private final CpuServiceImpl cpuServiceImpl;
-    private final RamServiceImpl ramServiceImpl;
-    private final MemoryServiceImpl memoryServiceImpl;
-    private final PcServiceImpl pcServiceImpl;
-    private final UserServiceImpl userServiceImpl;
+    private final GpuService gpuServiceImpl;
+    private final CpuService cpuServiceImpl;
+    private final RamService ramServiceImpl;
+    private final MemoryService memoryServiceImpl;
+    private final PcService pcServiceImpl;
+    private final UserService userServiceImpl;
+
+    @Autowired
+    public PCController(GpuService gpuServiceImpl, CpuService cpuServiceImpl, RamService ramServiceImpl, MemoryService memoryServiceImpl, PcService pcServiceImpl, UserService userServiceImpl) {
+        this.gpuServiceImpl = gpuServiceImpl;
+        this.cpuServiceImpl = cpuServiceImpl;
+        this.ramServiceImpl = ramServiceImpl;
+        this.memoryServiceImpl = memoryServiceImpl;
+        this.pcServiceImpl = pcServiceImpl;
+        this.userServiceImpl = userServiceImpl;
+    }
 
     @GetMapping("/add/add-pc")
     public String showAddPcForm(Model model) {

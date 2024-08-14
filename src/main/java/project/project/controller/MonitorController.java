@@ -2,6 +2,7 @@ package project.project.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,15 +15,20 @@ import project.project.model.dto.MonitorDTO;
 import project.project.model.dto.RamDTO;
 import project.project.model.enums.RamSizes;
 import project.project.model.enums.RamType;
+import project.project.service.MonitorService;
 import project.project.service.impl.MonitorServiceImpl;
 
 import java.util.List;
 
 @Controller
-@RequiredArgsConstructor
 public class MonitorController {
 
-    private final MonitorServiceImpl monitorService;
+    private final MonitorService monitorService;
+
+    @Autowired
+    public MonitorController(MonitorService monitorService) {
+        this.monitorService = monitorService;
+    }
 
     @GetMapping("/add/add-monitor")
     public String showAddMonitorForm(Model model) {

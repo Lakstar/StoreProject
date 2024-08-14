@@ -1,6 +1,7 @@
 package project.project.controller;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +12,10 @@ import project.project.model.enums.CPUType;
 import project.project.model.enums.MemoryType;
 import project.project.model.enums.RamSizes;
 import project.project.model.enums.RamType;
+import project.project.service.CpuService;
+import project.project.service.GpuService;
+import project.project.service.MemoryService;
+import project.project.service.RamService;
 import project.project.service.impl.CpuServiceImpl;
 import project.project.service.impl.GpuServiceImpl;
 import project.project.service.impl.MemoryServiceImpl;
@@ -18,12 +23,13 @@ import project.project.service.impl.RamServiceImpl;
 
 @Controller
 public class PartsController {
-    private final RamServiceImpl ramServiceImpl;
-    private final CpuServiceImpl cpuServiceImpl;
-    private final MemoryServiceImpl memoryServiceImpl;
-    private final GpuServiceImpl gpuServiceImpl;
+    private final RamService ramServiceImpl;
+    private final CpuService cpuServiceImpl;
+    private final MemoryService memoryServiceImpl;
+    private final GpuService gpuServiceImpl;
 
-    public PartsController(RamServiceImpl ramServiceImpl, CpuServiceImpl cpuServiceImpl, MemoryServiceImpl memoryServiceImpl, GpuServiceImpl gpuServiceImpl) {
+    @Autowired
+    public PartsController(RamService ramServiceImpl, CpuService cpuServiceImpl, MemoryService memoryServiceImpl, GpuService gpuServiceImpl) {
         this.ramServiceImpl = ramServiceImpl;
         this.cpuServiceImpl = cpuServiceImpl;
         this.memoryServiceImpl = memoryServiceImpl;
@@ -35,6 +41,8 @@ public class PartsController {
     public String showAddRamForm(Model model) {
         if(!model.containsAttribute("ramData")) {
             model.addAttribute("ramData", new RamDTO());
+            model.addAttribute("ramSizes", RamSizes.values());
+            model.addAttribute("ramTypes", RamType.values());
         }
         model.addAttribute("ramSizes", RamSizes.values());
         model.addAttribute("ramTypes", RamType.values());
@@ -44,6 +52,7 @@ public class PartsController {
     public String showAddCpuForm(Model model) {
         if(!model.containsAttribute("cpuData")) {
             model.addAttribute("cpuData", new CpuDTO());
+            model.addAttribute("cpuTypes", CPUType.values());
         }
         model.addAttribute("cpuTypes", CPUType.values());
         return "add-cpu";
@@ -59,6 +68,7 @@ public class PartsController {
     public String showAddMemoryForm(Model model) {
         if(!model.containsAttribute("memoryData")) {
             model.addAttribute("memoryData", new MemoryDTO());
+            model.addAttribute("memoryTypes", MemoryType.values());
         }
         model.addAttribute("memoryTypes", MemoryType.values());
         return "add-memory";

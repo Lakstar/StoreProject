@@ -17,4 +17,5 @@ public interface UserService {
     boolean isUsernameUnique(String username);
 
     boolean isEmailUnique(String email);
+    public void updateUsername(Long userId, String newUsername);
 }
