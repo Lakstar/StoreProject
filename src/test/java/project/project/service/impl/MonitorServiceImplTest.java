@@ -20,7 +20,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
+//warning TESTS ARE FAILING
 @ExtendWith(MockitoExtension.class)
 public class MonitorServiceImplTest {
 
@@ -58,7 +58,8 @@ public class MonitorServiceImplTest {
         MonitorDTO monitorDTO2 = new MonitorDTO();
         List<MonitorDTO> monitors = List.of(monitorDTO1, monitorDTO2);
 
-        when(monitorRestClient.get().uri("/monitors").accept(MediaType.APPLICATION_JSON).retrieve().body(new ParameterizedTypeReference<List<MonitorDTO>>() {}))
+        when(monitorRestClient.get().uri("/monitors").accept(MediaType.APPLICATION_JSON)
+                .retrieve().body(new ParameterizedTypeReference<List<MonitorDTO>>() {}))
                 .thenReturn(monitors);
 
         List<MonitorDTO> result = monitorService.getAllMonitors();
@@ -82,7 +83,8 @@ public class MonitorServiceImplTest {
 
         MonitorDTO updatedMonitorDTO = new MonitorDTO();
 
-        when(monitorRestClient.put().uri("/monitors/{id}", id).accept(MediaType.APPLICATION_JSON).body(updateMonitorDTO).retrieve().body(MonitorDTO.class))
+        when(monitorRestClient.put().uri("/monitors/{id}", id).accept(MediaType.APPLICATION_JSON)
+                .body(updateMonitorDTO).retrieve().body(MonitorDTO.class))
                 .thenReturn(updatedMonitorDTO);
 
         MonitorDTO result = monitorService.updateMonitor(id, updateMonitorDTO);

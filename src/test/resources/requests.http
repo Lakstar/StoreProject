@@ -1,0 +1,9 @@
+### Send POST requests with json body
+POST http://localhost:8081/monitors
+Content-Type: application/json
+
+{
+      "name": "The Legion",
+      "inches": 26,
+      "description": "The legion monitor, developed by Samsung. Supports 3D"
+}

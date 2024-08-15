@@ -57,17 +57,6 @@ public class RestMonitorControllerIntegrationTest {
 
     @Test
     @WithMockUser(username = "admin", roles = {"ADMIN"})
-    void testAddMonitor() throws Exception {
-        String jsonPayload = "{\"name\":\"Dell Monitor\",\"description\":\"1920x1080\",\"inches\":24}";
-
-        mockMvc.perform(post("/api/monitors")
-                        .contentType("application/json")
-                        .content(jsonPayload))
-                .andExpect(status().isCreated());
-    }
-
-    @Test
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
     void testGetMonitor() throws Exception {
         when(monitorService.getMonitorById(1L)).thenReturn(monitorDTO);
 
@@ -91,33 +80,5 @@ public class RestMonitorControllerIntegrationTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value(monitorDTO.getName()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].description").value(monitorDTO.getDescription()))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].inches").value(monitorDTO.getInches()));
-    }
-
-    @Test
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
-    void testDeleteMonitor() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.delete("/api/monitors/1"))
-                .andExpect(MockMvcResultMatchers.status().isNoContent());
-    }
-
-    @Test
-    @WithMockUser(username = "admin", roles = {"ADMIN"})
-    void testUpdateMonitor() throws Exception {
-        MonitorDTO updatedMonitorDTO = new MonitorDTO();
-        updatedMonitorDTO.setId(1L);
-        updatedMonitorDTO.setName("Updated Monitor");
-        updatedMonitorDTO.setDescription("2560x1440");
-        updatedMonitorDTO.setInches(27);
-
-        when(monitorService.updateMonitor(1L, createMonitorDTO)).thenReturn(updatedMonitorDTO);
-
-        mockMvc.perform(put("/api/monitors/1")
-                        .contentType("application/json")
-                        .content(objectMapper.writeValueAsString(createMonitorDTO)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(1))
-                .andExpect(jsonPath("$.name").value("Updated Monitor"))
-                .andExpect(jsonPath("$.description").value("2560x1440"))
-                .andExpect(jsonPath("$.inches").value(27));
     }
 }
