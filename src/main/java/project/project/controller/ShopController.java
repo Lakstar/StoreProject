@@ -15,7 +15,7 @@ public class ShopController {
     private final PcService pcServiceImpl;
 
     @Autowired
-    public ShopController(PcServiceImpl pcServiceImpl) {
+    public ShopController(PcService pcServiceImpl) {
         this.pcServiceImpl = pcServiceImpl;
     }
 

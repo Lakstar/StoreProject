@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: Tech Shop
   sql:
     init:
       mode: never

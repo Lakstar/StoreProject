@@ -11,7 +11,6 @@ import project.project.model.dto.RegisterDTO;
 import project.project.model.entity.PC;
 import project.project.model.entity.UserEntity;
 import project.project.service.UserService;
-import project.project.service.impl.UserServiceImpl;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class UserController {
     private final UserService userServiceImpl;
 
     @Autowired
-    public UserController(UserServiceImpl userServiceImpl) {
+    public UserController(UserService userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }
 
@@ -45,7 +44,7 @@ public class UserController {
             return "redirect:/register";
         }
         boolean success = userServiceImpl.register(data);
-        if(!success){
+        if (!success) {
             return "redirect:/register";
         }
         return "redirect:/";

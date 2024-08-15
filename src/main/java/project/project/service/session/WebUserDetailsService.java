@@ -1,5 +1,6 @@
 package project.project.service.session;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,22 +15,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class WebUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
-
-    public WebUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Username not found"));
-
         return mapToUserDetails(userEntity);
     }
-
     private UserDetails mapToUserDetails(UserEntity userEntity) {
         List<GrantedAuthority> authorities = userEntity.getRole().stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getUserRole().name()))

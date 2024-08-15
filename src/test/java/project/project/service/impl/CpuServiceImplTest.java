@@ -11,7 +11,6 @@ import org.modelmapper.ModelMapper;
 import project.project.model.dto.CpuDTO;
 import project.project.model.entity.CpuEntity;
 import project.project.repository.CPURepository;
-import project.project.service.impl.CpuServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

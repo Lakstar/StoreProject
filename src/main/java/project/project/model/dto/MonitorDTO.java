@@ -28,6 +28,10 @@ public class MonitorDTO {
         this.description = description;
     }
 
+    public MonitorDTO() {
+
+    }
+
     public Long getId() {
         return id;
     }

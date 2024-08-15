@@ -36,6 +36,12 @@ public class MonitorController {
         return "add-monitor";
     }
 
+    @PostMapping("/delete/monitor/{id}")
+    public String deleteMonitor(@PathVariable("id") Long id) {
+        monitorService.deleteMonitor(id);
+        return "redirect:/view/monitors";
+    }
+
     @GetMapping("/view/monitors")
     public String showMonitors(Model model) {
         List<MonitorDTO> monitors = monitorService.getAllMonitors();
@@ -51,7 +57,8 @@ public class MonitorController {
     }
 
     @PostMapping("/edit/monitor/{id}")
-    public String updateMonitor(@PathVariable("id") Long id, @ModelAttribute("monitorData") CreateMonitorDTO updateMonitorDTO) {
+    public String updateMonitor(@PathVariable("id") Long id,
+                                @ModelAttribute("monitorData") CreateMonitorDTO updateMonitorDTO) {
         monitorService.updateMonitor(id, updateMonitorDTO);
         return "redirect:/view/monitors";
     }

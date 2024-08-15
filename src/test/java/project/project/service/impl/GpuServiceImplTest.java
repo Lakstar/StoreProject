@@ -9,7 +9,6 @@ import org.modelmapper.ModelMapper;
 import project.project.model.dto.GpuDTO;
 import project.project.model.entity.GpuEntity;
 import project.project.repository.GPURepository;
-import project.project.service.impl.GpuServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

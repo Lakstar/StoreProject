@@ -15,10 +15,10 @@
             </div>
 
             <form th:action="@{/user/updateUsername}" method="post">
-                <input type="hidden" name="userId" th:value="${user.id}" />
+                <input type="hidden" name="userId" th:value="${user.id}">
                 <div>
                     <label th:text="#{new_username}">New Username:</label>
-                    <input type="text" name="newUsername" th:value="${user.username}" required />
+                    <input style="margin: 10px 0px; max-width: 20%" type="text" name="newUsername" th:value="${user.username}" required />
                 </div>
                 <button type="submit" class="update-button" th:text="#{update_username_button}">Update Username</button>
                 <p th:if="${updateError}" th:text="${updateError}"></p>

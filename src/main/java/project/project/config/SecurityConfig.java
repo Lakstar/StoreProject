@@ -30,6 +30,7 @@ public class SecurityConfig {
                                 .requestMatchers("/add/**").hasRole("ADMIN")
                                 .requestMatchers("/view/**").hasRole("ADMIN")
                                 .requestMatchers("/delete/**").hasRole("ADMIN")
+                                .requestMatchers("/edit/**").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->
